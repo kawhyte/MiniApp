@@ -1,0 +1,10 @@
+C:\Users\Kenny\DTGApp\DTG.API\bin\Debug\netcoreapp2.0\DTG.API.deps.json
+C:\Users\Kenny\DTGApp\DTG.API\bin\Debug\netcoreapp2.0\DTG.API.runtimeconfig.json
+C:\Users\Kenny\DTGApp\DTG.API\bin\Debug\netcoreapp2.0\DTG.API.runtimeconfig.dev.json
+C:\Users\Kenny\DTGApp\DTG.API\bin\Debug\netcoreapp2.0\DTG.API.dll
+C:\Users\Kenny\DTGApp\DTG.API\bin\Debug\netcoreapp2.0\DTG.API.pdb
+C:\Users\Kenny\DTGApp\DTG.API\obj\Debug\netcoreapp2.0\DTG.API.csproj.CoreCompileInputs.cache
+C:\Users\Kenny\DTGApp\DTG.API\obj\Debug\netcoreapp2.0\DTG.API.AssemblyInfoInputs.cache
+C:\Users\Kenny\DTGApp\DTG.API\obj\Debug\netcoreapp2.0\DTG.API.AssemblyInfo.cs
+C:\Users\Kenny\DTGApp\DTG.API\obj\Debug\netcoreapp2.0\DTG.API.dll
+C:\Users\Kenny\DTGApp\DTG.API\obj\Debug\netcoreapp2.0\DTG.API.pdb
