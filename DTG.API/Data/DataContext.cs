@@ -1,4 +1,5 @@
-using DTG.API.Model;
+
+using DTG.API.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DTG.API.Data
@@ -10,8 +11,8 @@ namespace DTG.API.Data
         {
             
         }
-        
         public DbSet<Value> Values { get; set; }
+        public DbSet<User> Users { get; set; }
        
     }
 }

@@ -1,4 +1,4 @@
-namespace DTG.API.Model
+namespace DTG.API.Models
 {
     public class Value
     {
