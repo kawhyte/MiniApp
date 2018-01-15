@@ -12540,11 +12540,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Kenny\\DTG-APP\\DTG.API.csproj",
+      "projectUniqueName": "C:\\Users\\Kenny\\DTG-APP\\DTG.API.csproj",
       "projectName": "DTG.API",
-      "projectPath": "c:\\Users\\Kenny\\DTG-APP\\DTG.API.csproj",
+      "projectPath": "C:\\Users\\Kenny\\DTG-APP\\DTG.API.csproj",
       "packagesPath": "C:\\Users\\Kenny\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Kenny\\DTG-APP\\obj\\",
+      "outputPath": "C:\\Users\\Kenny\\DTG-APP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
