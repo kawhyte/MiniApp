@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using DTG.API.Data;
+using DTG.API.Dtos;
 using DTG.API.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,18 +18,18 @@ namespace DTG.API.Controllers
 
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(string username, string password)
+        public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
         {
             //validate request here
 
-            username = username.ToLower();
+            userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
             
-            if (await _repo.UserExists(username))
+            if (await _repo.UserExists(userForRegisterDto.Username))
                 return BadRequest("Username is already taken");
 
-            var userToCreate = new User {Username = username};
+            var userToCreate = new User {Username = userForRegisterDto.Username};
 
-            var createUser = await _repo.Register(userToCreate, password);
+            var createUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
             return StatusCode(201);
 

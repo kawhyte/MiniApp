@@ -22,10 +22,11 @@ namespace DTG.API.Data
             {
                return null; 
             }
-        if (!VerifyPasswirdHash(password,user.PasswordHash,user.PasswordSalt))
-        {
-            return null; 
-        }
+
+            if (!VerifyPasswirdHash(password,user.PasswordHash,user.PasswordSalt))
+            {
+                return null; 
+            }
 
             //Auth success
             return user;
