@@ -21,11 +21,15 @@ namespace DTG.API.Controllers
         public async Task<IActionResult> Register([FromBody] UserForRegisterDto userForRegisterDto)
         {
             //validate request here
-
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
             
             if (await _repo.UserExists(userForRegisterDto.Username))
-                return BadRequest("Username is already taken");
+               ModelState.AddModelError("Username", "Username is already exists");
+
+            if (!ModelState.IsValid)
+              return BadRequest(ModelState);
+
+           
 
             var userToCreate = new User {Username = userForRegisterDto.Username};
 
