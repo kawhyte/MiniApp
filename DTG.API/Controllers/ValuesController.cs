@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DTG.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
