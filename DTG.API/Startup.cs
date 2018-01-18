@@ -32,21 +32,22 @@ namespace DTG.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var key  =  Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
-            services.AddDbContext<DataContext> (x => x.UseSqlite(Configuration
-                .GetConnectionString("DefaultConnection")));
-                
+            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration
+               .GetConnectionString("DefaultConnection")));
+
             services.AddMvc();
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey (key),
-                ValidateIssuer = false,
-                ValidateAudience = false
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 };
 
             });
@@ -61,22 +62,24 @@ namespace DTG.API
             }
             else
             {
-            app.UseExceptionHandler(builder => {
+                app.UseExceptionHandler(builder =>
+                {
 
-                builder.Run(async context => {
-                    context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
-
-                    var error = context.Features.Get<IExceptionHandlerFeature>();
-
-                    if(error != null)
+                    builder.Run(async context =>
                     {
-                        context.Response.AddApplicatinError(error.Error.Message);
-                        await context.Response.WriteAsync( error.Error.Message);
-                    }
-                });
-            });
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-                
+                        var error = context.Features.Get<IExceptionHandlerFeature>();
+
+                        if (error != null)
+                        {
+                            context.Response.AddApplicatinError(error.Error.Message);
+                            await context.Response.WriteAsync(error.Error.Message);
+                        }
+                    });
+                });
+
+
             }
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseAuthentication();
