@@ -7,7 +7,7 @@ import{Routes} from '@angular/router';
 
 export const appRoutes:Routes = [
 
-    { path: 'home', component: HomeComponent,  data: { title: 'Heroes List' } },
+    { path: 'home', component: HomeComponent },
 
     {
         path: '',
