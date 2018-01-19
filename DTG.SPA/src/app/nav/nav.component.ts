@@ -1,4 +1,5 @@
-import { AlertifyService } from './../_services/alertify.service';
+import { RouterModule, Router } from "@angular/router";
+import { AlertifyService } from "./../_services/alertify.service";
 import { AuthService } from "./../_services/auth.service";
 import { Component, OnInit } from "@angular/core";
 
@@ -9,17 +10,24 @@ import { Component, OnInit } from "@angular/core";
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  constructor(private authService: AuthService, private alertify:AlertifyService) {}
+  constructor(
+    private authService: AuthService,
+    private alertify: AlertifyService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
   login() {
     this.authService.login(this.model).subscribe(
       data => {
-       this.alertify.success("log success");
+        this.alertify.success("Login successful");
       },
       error => {
-        this.alertify.error(error);
+        this.alertify.error("Incorrect credential provided");
+      },
+      () => {
+        this.router.navigate(["/members"]);
       }
     );
   }
@@ -27,7 +35,7 @@ export class NavComponent implements OnInit {
   logout() {
     this.authService.userToken = null;
     localStorage.removeItem("token");
-    this.alertify.message("logged out");
+    this.alertify.message("Logged out successful");
   }
 
   loggedIn() {
