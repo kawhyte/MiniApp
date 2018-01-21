@@ -21,8 +21,6 @@ namespace DTG.API.Helpers
 
             return age;
 
-
-
             // DateTime today = DateTime.Today;
 
             // int months = today.Month - dateOfBirth.Month;
