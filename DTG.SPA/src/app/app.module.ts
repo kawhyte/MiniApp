@@ -19,7 +19,6 @@ import { MessagesComponent } from "./messages/messages.component";
 import { RouterModule } from "@angular/router";
 import { UserService } from "./_services/User.service";
 import { AuthModule } from "./auth/auth.module";
-//import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
   declarations: [
