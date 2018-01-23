@@ -13,7 +13,7 @@ export class MemberListComponent implements OnInit {
 users:User[];
 
 
-  constructor(private userservice: UserService, private alertify: AlertifyService) { }
+  constructor(private userService: UserService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     this.loadusers();
@@ -22,7 +22,7 @@ users:User[];
 
   loadusers(){
 
-    this.userservice.getUsers().subscribe((users:User[]) =>{
+    this.userService.getUsers().subscribe((users:User[]) =>{
     this.users = users;
   }, error => {
  this.alertify.error(error);

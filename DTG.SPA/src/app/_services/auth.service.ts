@@ -1,6 +1,6 @@
 import { Http, Headers, RequestOptions, Response } from "@angular/http";
 import { Injectable } from "@angular/core";
-import { tokenNotExpired, JwtHelper } from "angular2-jwt";
+import { tokenNotExpired, JwtHelper, AuthHttp } from "angular2-jwt";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
@@ -13,7 +13,7 @@ export class AuthService {
   decodedToken: any;
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private http: Http) {}
+  constructor(private http: AuthHttp) {}
 
   login(model: any) {
     return this.http
