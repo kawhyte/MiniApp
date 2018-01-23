@@ -6,6 +6,7 @@ import { User } from "../_models/User";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/catch";
 import "rxjs/add/observable/throw";
+//import { AuthHttp } from "angular2-jwt";
 
 @Injectable()
 export class UserService {
@@ -29,6 +30,8 @@ export class UserService {
       return new RequestOptions({ headers: headers });
     }
   }
+
+
 
   private handleError(error: any) {
     const applicationError = error.headers.get("Application-Error");
