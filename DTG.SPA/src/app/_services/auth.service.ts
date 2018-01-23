@@ -13,7 +13,7 @@ export class AuthService {
   decodedToken: any;
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private http: AuthHttp) {}
+  constructor(private http: Http) {}
 
   login(model: any) {
     return this.http

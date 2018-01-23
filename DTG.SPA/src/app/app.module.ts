@@ -12,13 +12,14 @@ import { AppComponent } from "./app.component";
 import { NavComponent } from "./nav/nav.component";
 import { HomeComponent } from "./home/home.component";
 import { RegisterComponent } from "./register/register.component";
-import { BsDropdownModule } from "ngx-bootstrap";
+import { BsDropdownModule, TabsModule } from "ngx-bootstrap";
 import { MemberListComponent } from "./members/member-list/member-list.component";
 import { ListComponent } from "./list/list.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { RouterModule } from "@angular/router";
 import { UserService } from "./_services/User.service";
 import { AuthModule } from "./auth/auth.module";
+//import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AuthModule } from "./auth/auth.module";
     FormsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    AuthModule
+    AuthModule,
+    TabsModule.forRoot()
   ],
   providers: [AuthService, AlertifyService, AuthGuard, UserService],
   bootstrap: [AppComponent]
