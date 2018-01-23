@@ -1,3 +1,6 @@
+import { NgxGalleryModule } from 'ngx-gallery';
+import { MemberListResolver } from './_resolvers/member-list.resolver';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 import { MemberDetailComponent } from "./members/member-detail/member-detail.component";
 import { MemberCardComponent } from "./members/member-card/member-card.component";
 import { AuthGuard } from "./_guards/auth.guard";
@@ -39,9 +42,10 @@ import { AuthModule } from "./auth/auth.module";
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     AuthModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgxGalleryModule
   ],
-  providers: [AuthService, AlertifyService, AuthGuard, UserService],
+  providers: [AuthService, AlertifyService, AuthGuard, UserService, MemberDetailResolver,MemberListResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
