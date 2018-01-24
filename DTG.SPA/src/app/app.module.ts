@@ -1,3 +1,4 @@
+import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
@@ -22,6 +23,7 @@ import { MessagesComponent } from "./messages/messages.component";
 import { RouterModule } from "@angular/router";
 import { UserService } from "./_services/User.service";
 import { AuthModule } from "./auth/auth.module";
+import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { AuthModule } from "./auth/auth.module";
     ListComponent,
     MessagesComponent,
     MemberCardComponent,
-   MemberDetailComponent
+   MemberDetailComponent,
+   MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,7 @@ import { AuthModule } from "./auth/auth.module";
     TabsModule.forRoot(),
     NgxGalleryModule
   ],
-  providers: [AuthService, AlertifyService, AuthGuard, UserService, MemberDetailResolver,MemberListResolver],
+  providers: [AuthService, AlertifyService, AuthGuard, UserService, MemberDetailResolver,MemberListResolver, MemberEditResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
