@@ -1,7 +1,7 @@
-import { MemberEditComponent } from './members/member-edit/member-edit.component';
-import { NgxGalleryModule } from 'ngx-gallery';
-import { MemberListResolver } from './_resolvers/member-list.resolver';
-import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
+import { MemberEditComponent } from "./members/member-edit/member-edit.component";
+import { NgxGalleryModule } from "ngx-gallery";
+import { MemberListResolver } from "./_resolvers/member-list.resolver";
+import { MemberDetailResolver } from "./_resolvers/member-detail.resolver";
 import { MemberDetailComponent } from "./members/member-detail/member-detail.component";
 import { MemberCardComponent } from "./members/member-card/member-card.component";
 import { AuthGuard } from "./_guards/auth.guard";
@@ -23,7 +23,8 @@ import { MessagesComponent } from "./messages/messages.component";
 import { RouterModule } from "@angular/router";
 import { UserService } from "./_services/User.service";
 import { AuthModule } from "./auth/auth.module";
-import { MemberEditResolver } from './_resolvers/member-edit.resolver';
+import { MemberEditResolver } from "./_resolvers/member-edit.resolver";
+import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards";
 
 @NgModule({
   declarations: [
@@ -35,8 +36,8 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
     ListComponent,
     MessagesComponent,
     MemberCardComponent,
-   MemberDetailComponent,
-   MemberEditComponent
+    MemberDetailComponent,
+    MemberEditComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,17 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
     TabsModule.forRoot(),
     NgxGalleryModule
   ],
-  providers: [AuthService, AlertifyService, AuthGuard, UserService, MemberDetailResolver,MemberListResolver, MemberEditResolver],
+  providers: [
+    AuthService,
+    AlertifyService,
+    AuthGuard,
+    UserService,
+    MemberDetailResolver,
+    MemberListResolver,
+    MemberEditResolver,
+    PreventUnsavedChanges
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

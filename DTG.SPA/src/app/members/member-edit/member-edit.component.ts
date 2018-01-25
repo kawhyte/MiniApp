@@ -3,6 +3,8 @@ import { UserService } from '../../_services/User.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../_models/User';
+import { ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-member-edit',
@@ -10,8 +12,8 @@ import { User } from '../../_models/User';
   styleUrls: ['./member-edit.component.css']
 })
 export class MemberEditComponent implements OnInit {
-
   user: User;
+  @ViewChild('editForm') editForm: NgForm;
   
   constructor(
     private userService: UserService,
@@ -26,4 +28,9 @@ export class MemberEditComponent implements OnInit {
     });
   }
 
+  updateUser(){
+    console.log(this.user);
+    this.alertify.success("Profile Updated!");
+    this.editForm.reset(this.user);
+  }
 }
