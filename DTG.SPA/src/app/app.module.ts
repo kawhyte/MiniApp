@@ -1,3 +1,4 @@
+import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { MemberEditComponent } from "./members/member-edit/member-edit.component";
 import { NgxGalleryModule } from "ngx-gallery";
 import { MemberListResolver } from "./_resolvers/member-list.resolver";
@@ -37,7 +38,8 @@ import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards"
     MessagesComponent,
     MemberCardComponent,
     MemberDetailComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,

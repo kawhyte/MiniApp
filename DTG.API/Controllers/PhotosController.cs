@@ -38,14 +38,27 @@ namespace DTG.API.Controllers
             _cloudinary = new Cloudinary(cloudinaryAccount);
         }
 
-        [HttpPost]
 
+        [HttpGet("{id}", Name = "GetPhoto")]
+        public async Task<IActionResult> GetPhoto(int id)
+        {
+
+            var photoFromRepo = await _repo.GetPhoto(id);
+
+            var photo = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
+
+            return Ok(photo);
+        }
+
+
+
+        [HttpPost]
         public async Task<IActionResult> AddPhotoForUser(int userId, PhotoForCreationDto photoDto)
         {
             var user = await _repo.GetUser(userId);
 
             if (user == null)
-                return BadRequest(" Could not find user");
+                return BadRequest("Could not find user");
 
 
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -80,19 +93,22 @@ namespace DTG.API.Controllers
 
             photo.User = user;
 
-            if(!user.Photos.Any(m => m.IsMain))
-            photo.IsMain= true;
+            if (!user.Photos.Any(m => m.IsMain))
+                photo.IsMain = true;
 
             user.Photos.Add(photo);
 
-            if(await _repo.SaveAll()){
+            var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
 
-                return Ok(); //change
+            if (await _repo.SaveAll())
+            {
+
+                return CreatedAtRoute("GetPhoto",new { id = photo.Id},photoToReturn);
             }
 
-            return BadRequest("could not add the photo");
+            return BadRequest("Could not add the photo");
         }
 
-
-
     }
+
+}
