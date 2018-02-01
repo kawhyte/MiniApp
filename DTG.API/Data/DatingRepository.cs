@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DTG.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ namespace DTG.API.Data
             _context.Remove(entity);
         }
 
+       
+
         public Task<Photo> GetPhoto(int id)
         {
 
@@ -46,6 +49,12 @@ namespace DTG.API.Data
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+         public Task<Photo> GetMainPhotoForUser(int userId)
+        {
+             return _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
+           
         }
     }
 }

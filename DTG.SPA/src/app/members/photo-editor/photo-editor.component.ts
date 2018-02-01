@@ -1,8 +1,11 @@
+import { AlertifyService } from "./../../_services/alertify.service";
+import { UserService } from "./../../_services/User.service";
 import { Photo } from "./../../_models/Photo";
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter  } from "@angular/core";
 import { FileUploader } from "ng2-file-upload";
 import { environment } from "../../../environments/environment";
 import { AuthService } from "../../_services/auth.service";
+import * as _ from "underscore";
 
 @Component({
   selector: "app-photo-editor",
@@ -16,9 +19,19 @@ export class PhotoEditorComponent implements OnInit {
   public hasBaseDropZoneOver: boolean = false;
   public hasAnotherDropZoneOver: boolean = false;
   baseUrl = environment.apiUrl;
-  constructor(private authService: AuthService) {}
+  currentMain: Photo;
 
-  ngOnInit() {this.initializeUploader() }
+  @Output() getMemberPhotChange =  new EventEmitter<string>();
+
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private alertify: AlertifyService
+  ) {}
+
+  ngOnInit() {
+    this.initializeUploader();
+  }
 
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -28,12 +41,12 @@ export class PhotoEditorComponent implements OnInit {
     this.uploader = new FileUploader({
       url:
         this.baseUrl +
-        'users/' +
+        "users/" +
         this.authService.decodedToken.nameid +
-        '/photos',
-      authToken: 'Bearer ' + localStorage.getItem('token'),
+        "/photos",
+      authToken: "Bearer " + localStorage.getItem("token"),
       isHTML5: true,
-      allowedFileType: ['image'],
+      allowedFileType: ["image"],
       removeAfterUpload: true,
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
@@ -52,8 +65,21 @@ export class PhotoEditorComponent implements OnInit {
         this.photos.push(photo);
       }
     };
-
   }
 
-
+  setMainPhoto(photo: Photo) {
+    this.userService
+      .setMainPhoto(this.authService.decodedToken.nameid, photo.id)
+      .subscribe(
+        () => {
+          this.currentMain = _.findWhere(this.photos, { isMain: true }); 
+          this.currentMain.isMain = false;
+          photo.isMain = true;
+          this.getMemberPhotChange.emit(photo.url);
+        },
+        error => {
+          this.alertify.error(error);
+        }
+      );
+  }
 }
