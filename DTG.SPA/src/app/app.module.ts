@@ -26,6 +26,7 @@ import { UserService } from "./_services/User.service";
 import { AuthModule } from "./auth/auth.module";
 import { MemberEditResolver } from "./_resolvers/member-edit.resolver";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards";
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards"
     RouterModule.forRoot(appRoutes),
     AuthModule,
     TabsModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
+    FileUploadModule
   ],
   providers: [
     AuthService,
