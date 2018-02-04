@@ -42,11 +42,12 @@ namespace DTG.API.Controllers
                 return BadRequest(ModelState);
 
 
-            var userToCreate = new User { Username = userForRegisterDto.Username };
+            var userToCreate = _mapper.Map<User>(userForRegisterDto);//new User { Username = userForRegisterDto.Username };
 
             var createUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
-            return StatusCode(201);
+            var userToreturn = _mapper.Map<UserForDetailDto>(createUser);
+            return CreatedAtRoute("GetUser", new { controller = "Users", id = createUser.Id}, userToreturn );
         }
 
         [HttpPost("login")]
@@ -74,7 +75,7 @@ namespace DTG.API.Controllers
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha512Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            
+
             var tokenString = tokenHandler.WriteToken(token);
 
             var user = _mapper.Map<UserForListDto>(userFromRepo);

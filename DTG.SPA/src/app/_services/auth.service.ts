@@ -35,15 +35,22 @@ currentPhotUrl = this.photoUrl.asObservable();
           this.decodedToken = this.jwtHelper.decodeToken(user.tokenString);
           this.currentUser = user.user;
           this.userToken = user.tokenString;
-          this.changeMemeberPhoto(this.currentUser.photoUrl);
+
+          if(this.currentUser.photoUrl !== null){
+
+            this.changeMemeberPhoto(this.currentUser.photoUrl);
+          }
+          else{
+            this.changeMemeberPhoto('../../assets/user.png')
+          }
         }
       })
       .catch(this.handleError);
   }
 
-  register(model: any) {
+  register(user: User) {
     return this.http
-      .post(this.baseUrl + "register", model, this.requestOptions())
+      .post(this.baseUrl + "register", user, this.requestOptions())
       .catch(this.handleError);
   }
 
