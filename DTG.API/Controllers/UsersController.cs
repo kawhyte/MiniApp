@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using DTG.API.Data;
 using DTG.API.Dtos;
+using DTG.API.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DTG.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     public class UsersController : Controller

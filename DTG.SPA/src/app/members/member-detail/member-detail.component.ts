@@ -52,7 +52,7 @@ export class MemberDetailComponent implements OnInit {
         description: this.user.photos[i].description
       });
     }
-
+ 
     return imageUrls;
   }
   // loaduser() {

@@ -20,9 +20,11 @@ h5 small {
 }
 
 img {
+  width: 150px;
   transform: scale(1, 1);
   transition-duration: 500ms;
   transition-timing-function: ease-out;
+
 }
 
 .panel:hover img {
@@ -56,6 +58,9 @@ img {
 .animate{
   transition: all 0.3s ease-in-out;
 }
+
+
+
 /*
 @media (max-width: 768px) {
   .btn {
