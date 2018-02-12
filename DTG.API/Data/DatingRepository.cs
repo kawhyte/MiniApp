@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DTG.API.Helpers;
 using DTG.API.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,7 +26,7 @@ namespace DTG.API.Data
             _context.Remove(entity);
         }
 
-       
+
 
         public Task<Photo> GetPhoto(int id)
         {
@@ -40,10 +41,10 @@ namespace DTG.API.Data
             return user;
         }
 
-        public async Task<IEnumerable<User>> GetUsers()
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = await _context.Users.Include(p => p.Photos).ToListAsync();
-            return users;
+            var users = _context.Users.Include(p => p.Photos);
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll()
@@ -51,10 +52,10 @@ namespace DTG.API.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-         public Task<Photo> GetMainPhotoForUser(int userId)
+        public Task<Photo> GetMainPhotoForUser(int userId)
         {
-             return _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
-           
+            return _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
+
         }
     }
 }

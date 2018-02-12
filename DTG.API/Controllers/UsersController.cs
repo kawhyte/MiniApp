@@ -26,12 +26,13 @@ namespace DTG.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers(UserParams userParams)
         {
-            var users = await _repo.GetUsers();
+            var users = await _repo.GetUsers(userParams);
 
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
+            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
             return Ok(usersToReturn);
 
         }
@@ -59,15 +60,15 @@ namespace DTG.API.Controllers
             if (userFromRepo == null)
                 return NotFound($"Could not find user with id {id}");
 
-                if(currentUserId != userFromRepo.Id)
+            if (currentUserId != userFromRepo.Id)
                 return Unauthorized();
 
-                _mapper.Map(userForUpdateDto, userFromRepo);
+            _mapper.Map(userForUpdateDto, userFromRepo);
 
-                if (await _repo.SaveAll())
+            if (await _repo.SaveAll())
                 return NoContent();
 
-                throw new Exception($"Updating user {id} faid to save");
+            throw new Exception($"Updating user {id} faid to save");
         }
     }
 }
