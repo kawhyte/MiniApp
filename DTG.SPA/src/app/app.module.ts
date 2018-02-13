@@ -1,3 +1,4 @@
+
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { MemberEditComponent } from "./members/member-edit/member-edit.component";
 import { NgxGalleryModule } from "ngx-gallery";
@@ -29,6 +30,7 @@ import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards"
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {TimeAgoPipe} from 'time-ago-pipe';
+import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import {TimeAgoPipe} from 'time-ago-pipe';
     NgxGalleryModule,
     FileUploadModule,
     ReactiveFormsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot()
   ],
   providers: [
     AuthService,
