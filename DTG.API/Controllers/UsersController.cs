@@ -6,6 +6,7 @@ using AutoMapper;
 using DTG.API.Data;
 using DTG.API.Dtos;
 using DTG.API.Helpers;
+using DTG.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -34,9 +35,10 @@ namespace DTG.API.Controllers
 
             userParams.UserId = currentUserId;
 
-            if(string.IsNullOrEmpty(userParams.Gender)){
+            if (string.IsNullOrEmpty(userParams.Gender))
+            {
 
-                userParams.Gender = userFromRepo.Gender == "male"? "female" :"male";
+                userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
             }
 
 
@@ -82,5 +84,36 @@ namespace DTG.API.Controllers
 
             throw new Exception($"Updating user {id} faid to save");
         }
+
+        [HttpPost("{id}/like/{recipientId}")]
+        public async Task<IActionResult> LikeUser(int id, int recipientId)
+        {
+
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var like = await _repo.GetLike(id, recipientId);
+
+            if (like != null)
+                return BadRequest("Already liked");
+
+            if (await _repo.GetUser(recipientId) == null)
+                return NotFound();
+
+            like = new Like
+            {
+                LikerId = id,
+                LikeeId = recipientId
+            };
+
+
+            _repo.Add<Like>(like);
+
+            if (await _repo.SaveAll())
+                return Ok();
+
+            return BadRequest("Failed to Add user");
+        }
+
     }
 }

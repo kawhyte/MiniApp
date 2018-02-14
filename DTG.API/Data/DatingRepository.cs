@@ -28,10 +28,10 @@ namespace DTG.API.Data
 
 
 
-        public Task<Photo> GetPhoto(int id)
+        public async Task<Photo> GetPhoto(int id)
         {
 
-            var photo = _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
             return photo;
         }
 
@@ -48,9 +48,19 @@ namespace DTG.API.Data
             users = users.Where(u => u.Id != userParams.UserId);
             users = users.Where(u => u.Gender == userParams.Gender);
 
+            if (userParams.Likers)
+            {
+                users = users.Where(u => u.Liker.Any(l => l.LikerId == u.Id));
+            }
+
+            if (userParams.Likees)
+            {
+                users = users.Where(u => u.Likee.Any(l => l.LikeeId == u.Id));
+            }
+
             if (userParams.MinAge != 18 || userParams.MaxAge != 99)
             {
-                users = users.Where
+               users = users.Where
               (u => u.DateOfBirth.CalculateAge() >= userParams.MinAge
               && u.DateOfBirth.CalculateAge() <= userParams.MaxAge);
             }
@@ -75,10 +85,15 @@ namespace DTG.API.Data
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public Task<Photo> GetMainPhotoForUser(int userId)
+        public async Task<Photo> GetMainPhotoForUser(int userId)
         {
-            return _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
+            return await _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
 
+        }
+
+        public async Task<Like> GetLike(int userId, int recipientId)
+        {
+            return await _context.Likes.FirstOrDefaultAsync(u => u.LikerId == userId && u.LikeeId == recipientId);
         }
     }
 }
