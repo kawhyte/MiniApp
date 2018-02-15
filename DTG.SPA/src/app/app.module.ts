@@ -33,6 +33,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import {TimeAgoPipe} from 'time-ago-pipe';
 import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
 import { MessagesResolver } from './_resolvers/message.resolver';
+import { JwtModule } from '@auth0/angular-jwt';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,19 @@ import { MessagesResolver } from './_resolvers/message.resolver';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+        whitelistedDomains: ['localhost:5000']
+      }
+    })
+
+
   ],
   providers: [
     AuthService,
