@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DTG.API.Controllers
 {
-   // [Authorize]
+    // [Authorize]
     [ServiceFilter(typeof(LogUserActivity))]
     [Route("api/users/{userId}/[controller]")]
     public class MessagesController : Controller
@@ -43,34 +43,34 @@ namespace DTG.API.Controllers
         }
 
         [HttpGet("thread/{id}")]
-         public async Task<IActionResult> GetMessagesThread(int userId, int id)
+        public async Task<IActionResult> GetMessagesThread(int userId, int id)
         {
 
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-                var messagesFromRepo = await _repo.GetMessageThread(userId, id);
+            var messagesFromRepo = await _repo.GetMessageThread(userId, id);
 
-                var messageThread = _mapper.Map <IEnumerable<MessageToReturnDto>>(messagesFromRepo);
+            var messageThread = _mapper.Map<IEnumerable<MessageToReturnDto>>(messagesFromRepo);
 
-                return Ok(messageThread);
+            return Ok(messageThread);
         }
 
 
 
- [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> GetMessagesForUser(int userId, MessageParams messageParams)
         {
 
-             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
 
-                var messageFromRepo =  await _repo.GetMessagesForUser(messageParams);
+            var messageFromRepo = await _repo.GetMessagesForUser(messageParams);
 
-                var messages= _mapper.Map<IEnumerable<MessageToReturnDto>>(messageFromRepo);
-                Response.AddPagination(messageFromRepo.CurrentPage, messageFromRepo.PageSize, messageFromRepo.TotalCount, messageFromRepo.TotalPages);
+            var messages = _mapper.Map<IEnumerable<MessageToReturnDto>>(messageFromRepo);
+            Response.AddPagination(messageFromRepo.CurrentPage, messageFromRepo.PageSize, messageFromRepo.TotalCount, messageFromRepo.TotalPages);
 
-                return Ok (messages);
+            return Ok(messages);
         }
 
 
@@ -82,7 +82,9 @@ namespace DTG.API.Controllers
                 return Unauthorized();
 
             messageForCreationDto.SenderId = userId;
+
             var recipent = await _repo.GetUser(messageForCreationDto.RecipientId);
+            var sender = await _repo.GetUser(messageForCreationDto.SenderId);
 
             if (recipent == null)
                 return BadRequest("Could not find user");
@@ -91,7 +93,7 @@ namespace DTG.API.Controllers
 
             _repo.Add(message);
 
-            var messageToReturn =  _mapper.Map<MessageForCreationDto>(message);
+            var messageToReturn = _mapper.Map<MessageToReturnDto>(message);
 
             if (await _repo.SaveAll())
                 return CreatedAtRoute("GetMessage", new { id = message.Id }, messageToReturn);
@@ -100,5 +102,50 @@ namespace DTG.API.Controllers
             throw new Exception("Create message failed");
 
         }
+
+
+        [HttpPost("{id}")]
+        public async Task<IActionResult> DeleteMessage(int id, int userId)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var messageFromRepo = await _repo.GetMessage(id);
+
+            if (messageFromRepo.SenderId == userId)
+                messageFromRepo.SenderDeleted = true;
+
+            if (messageFromRepo.RecipientId == userId)
+                messageFromRepo.RecipientDeleted = true;
+
+            if (messageFromRepo.SenderDeleted && messageFromRepo.RecipientDeleted)
+                _repo.Delete(messageFromRepo);
+
+            if (await _repo.SaveAll())
+                return NoContent();
+
+            throw new Exception("Error deleting the message");
+        }
+
+
+        [HttpPost("{id}/read")]
+        public async Task<IActionResult> MarkMessageAsRead(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var message= await _repo.GetMessage(id);
+
+            if (message.RecipientId != userId)
+                return BadRequest("failed to mark message as read");
+            
+            message.IsRead = true;
+            message.DateRead = DateTime.Now;
+
+            await _repo.SaveAll();
+            
+            return NoContent();
+        }
+
     }
 }
