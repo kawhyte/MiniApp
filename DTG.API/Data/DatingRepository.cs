@@ -88,7 +88,6 @@ namespace DTG.API.Data
         public async Task<Photo> GetMainPhotoForUser(int userId)
         {
             return await _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.IsMain);
-
         }
 
         public async Task<Like> GetLike(int userId, int recipientId)
@@ -98,13 +97,10 @@ namespace DTG.API.Data
 
         public async Task<Message> GetMessage(int id)
         {
-
             return await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
-
-
         }
 
-        public Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams)
+        public async Task<PagedList<Message>> GetMessagesForUser(MessageParams messageParams)
         {
 
             var messages = _context.Messages
@@ -128,13 +124,18 @@ namespace DTG.API.Data
 
             messages = messages.OrderByDescending(d => d.MessageSent);
 
-            return PagedList<Message>.CreateAsync(messages, messageParams.PageNumber, messageParams.PageSize);
+            return await PagedList<Message>.CreateAsync(messages, messageParams.PageNumber, messageParams.PageSize);
 
         }
 
-        public Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId)
+        public async Task<IEnumerable<Message>> GetMessageThread(int userId, int recipientId)
         {
-            throw new System.NotImplementedException();
+            var messages = await _context.Messages
+           .Include(u => u.Sender).ThenInclude(p => p.Photos)
+           .Include(u => u.Recipient).ThenInclude(p => p.Photos)
+           .Where(m => (m.RecipientId == userId && m.SenderId == recipientId) || (m.RecipientId == recipientId && m.SenderId == userId))
+           .OrderByDescending(m => m.MessageSent).ToListAsync();
+            return messages;
         }
 
     }
