@@ -36,6 +36,43 @@ namespace DTG.API
         {
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
+            services.AddDbContext<DataContext>(x => x.UseMySql(Configuration
+               .GetConnectionString("DefaultConnection"))
+               .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning))
+               );
+
+            services.AddMvc();
+            services.AddTransient<Seed>();
+            services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+            services.AddAutoMapper();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+
+            });
+            services.AddMvc().AddJsonOptions(opt =>
+           {
+               opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+           });
+
+           services.AddScoped<LogUserActivity>();
+        }
+
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public void ConfigureDelelopmentServices(IServiceCollection services)
+        {
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
+
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration
                .GetConnectionString("DefaultConnection"))
                .ConfigureWarnings(warnings => warnings.Ignore(CoreEventId.IncludeIgnoredWarning))
@@ -67,6 +104,11 @@ namespace DTG.API
            services.AddScoped<LogUserActivity>();
         }
 
+
+
+
+
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, Seed seeder)
         {
@@ -95,7 +137,7 @@ namespace DTG.API
 
 
             }
-            //seeder.SeedUsers();
+           // seeder.SeedUsers();
             app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
             app.UseAuthentication();
 
