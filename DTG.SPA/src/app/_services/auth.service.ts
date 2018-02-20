@@ -1,15 +1,14 @@
-import { Headers } from '@angular/http';
-
-import { Injectable } from "@angular/core";
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/catch";
-import "rxjs/add/observable/throw";
-import { Observable } from "rxjs/Observable";
-import { User } from "../_models/User";
-import{BehaviorSubject} from "rxjs/BehaviorSubject";
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../_models/user';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthUser } from '../_models/authUser';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
@@ -48,7 +47,7 @@ currentPhotUrl = this.photoUrl.asObservable();
           }
         }
       })
-      .catch(this.handleError);
+      
   }
 
   register(user: User) {
@@ -56,7 +55,7 @@ currentPhotUrl = this.photoUrl.asObservable();
       .post(this.baseUrl + "register", user,{headers: new HttpHeaders()
       .set('Content-Type','application/json')
       })
-      .catch(this.handleError);
+     
   }
 
   loggedIn() {
@@ -71,22 +70,4 @@ currentPhotUrl = this.photoUrl.asObservable();
   }
 
 
-  private handleError(error: any) {
-    const applicationError = error.headers.get("Application-Error");
-    if (applicationError) {
-      return Observable.throw(applicationError);
-    }
-
-    const serverError = error.json();
-    let modelStateErrors = "";
-
-    if (serverError) {
-      for (const key in serverError) {
-        if (serverError[key]) {
-          modelStateErrors += serverError[key] + "\n";
-        }
-      }
-    }
-    return Observable.throw(modelStateErrors || "Server error");
-  }
 }

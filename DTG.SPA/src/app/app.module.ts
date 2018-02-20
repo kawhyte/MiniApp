@@ -1,3 +1,4 @@
+import { ErrorInterceptor } from './_services/error.interceptor';
 import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 import { ListsResolver } from './_resolvers/lists.resolver';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
@@ -25,7 +26,6 @@ import { ListComponent } from "./list/list.component";
 import { MessagesComponent } from "./messages/messages.component";
 import { RouterModule } from "@angular/router";
 import { UserService } from "./_services/User.service";
-import { AuthModule } from "./auth/auth.module";
 import { MemberEditResolver } from "./_resolvers/member-edit.resolver";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards";
 import { FileUploadModule } from 'ng2-file-upload';
@@ -58,7 +58,6 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
-    AuthModule,
     TabsModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
@@ -89,7 +88,8 @@ import { HttpClientModule } from '@angular/common/http';
     MemberEditResolver,
     PreventUnsavedChanges,
     ListsResolver,
-    MessagesResolver
+    MessagesResolver,
+    ErrorInterceptor
   ],
   bootstrap: [AppComponent]
 })
