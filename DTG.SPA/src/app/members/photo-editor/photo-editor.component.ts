@@ -65,7 +65,7 @@ export class PhotoEditorComponent implements OnInit {
         this.photos.push(photo);
 
         if (photo.isMain){
-          this.authService.changeMemeberPhoto(photo.url);
+          this.authService.changeMemberPhoto(photo.url);
           this.authService.currentUser.photoUrl = photo.url;
           localStorage.setItem(
             "user",
@@ -84,7 +84,7 @@ export class PhotoEditorComponent implements OnInit {
           this.currentMain = _.findWhere(this.photos, { isMain: true });
           this.currentMain.isMain = false;
           photo.isMain = true;
-          this.authService.changeMemeberPhoto(photo.url);
+          this.authService.changeMemberPhoto(photo.url);
           this.authService.currentUser.photoUrl = photo.url;
           localStorage.setItem(
             "user",
