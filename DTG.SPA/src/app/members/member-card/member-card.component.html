@@ -1,3 +1,26 @@
+<div class="panel-body"> 
+<mat-card  class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <h5><mat-card-title>{{user.knownAs}}, {{user.age}}</mat-card-title> </h5>
+  
+    </mat-card-header>
+    <div class="panel-image">
+    <img mat-card-lg-image src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.knownAs}}">
+    <h5><small><mat-card-subtitle>Location: {{user.city}}</mat-card-subtitle></small></h5>  
+  
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+  </div>
+   
+  </mat-card>
+</div>
+
+
+
+
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="panel-image">
