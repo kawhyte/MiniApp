@@ -3,9 +3,49 @@
 }
 
 img{
-
     max-height:50px;
     border:2px solid white;
     display:inline;
+}
 
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .short-spacer {
+    flex-basis: 100px;
+  }
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  mat-form-field.mat-form-field {
+    font-size: 14px;
+  }
+
+  a:link, a:visited {
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }

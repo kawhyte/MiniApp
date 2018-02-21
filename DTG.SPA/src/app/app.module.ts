@@ -35,6 +35,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
 import { MessagesResolver } from './_resolvers/message.resolver';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpClientModule } from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { HttpClientModule } from '@angular/common/http';
     NgxGalleryModule,
     FileUploadModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule,
     BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),

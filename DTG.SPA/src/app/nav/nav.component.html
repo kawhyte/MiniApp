@@ -1,3 +1,79 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="short-spacer"></span>
+
+
+    <a class="navbar-brand" [routerLink]="['/home']">DTG App</a>
+
+    <ul class="nav navbar-nav" *ngIf="loggedIn()">
+      <a [routerLink]="['/members']" href="#">
+        <button mat-button>Matches</button>
+      </a>
+      <a [routerLink]="['/list']">
+        <button mat-button>List</button>
+      </a>
+      <a [routerLink]="['/messages']">
+        <button mat-button>Messages</button>
+      </a>
+    </ul>
+ 
+    <span class="example-spacer"></span>
+
+    <ul *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
+      <li>
+        <img src="{{photoUrl}}" alt="">
+      </li>
+      <!-- <li>
+        <a (click)="false">Welcome, {{authService.decodedToken?.unique_name | titlecase}}</a>
+      </li> -->
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>expand_more</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <a [routerLink]="['/member/edit']">
+          <button mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Edit Profile</span>
+          </button>
+        </a>
+
+        <a (click)="logout()">
+          <button mat-menu-item>
+            <mat-icon>voicemail</mat-icon>
+            <span>Logout </span>
+
+          </button>
+        </a>
+      </mat-menu>
+    </ul>
+
+
+    
+        <form *ngIf="!loggedIn()" #loginForm="ngForm" class= "example-form" (ngSubmit)="login()">
+       <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password" [(ngModel)]="model.password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
+      </div>
+
+      
+      </form>
+
+
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<!-- 
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
@@ -38,7 +114,7 @@
 
       <ul *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
         <li>
-          <img src= "{{photoUrl}}" alt="">
+          <img src="{{photoUrl}}" alt="">
 
         </li>
         <li class="dropdown" dropdown>
@@ -60,6 +136,9 @@
       </ul>
 
     </div>
-    <!--/.navbar-collapse -->
   </div>
-</nav>
+
+
+
+
+</nav> -->
