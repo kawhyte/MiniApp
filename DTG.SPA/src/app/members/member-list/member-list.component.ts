@@ -1,10 +1,13 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { Pagination, PaginatedResult } from "./../../_models/Pagination";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { AlertifyService } from "./../../_services/alertify.service";
 import { UserService } from "./../../_services/User.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, NgZone } from "@angular/core";
 import { User } from "../../_models/User";
+
+const SMALL_WIDTH_BREAKPOINT = 720;
 
 @Component({
   selector: "app-member-list",
@@ -18,11 +21,18 @@ export class MemberListComponent implements OnInit {
   userParams: any = {};
   pagination: Pagination;
 
-  constructor(
+  private mediaMatcher: MediaQueryList =
+    matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
+
+  constructor( zone: NgZone,
     private userService: UserService,
     private alertify: AlertifyService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+
+    this.mediaMatcher.addListener(mql => 
+      zone.run(() => this.mediaMatcher = mql));
+  }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -63,6 +73,10 @@ export class MemberListComponent implements OnInit {
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
    this.loadUsers(); 
+  }
+
+  isScreenSmall(): boolean {
+    return this.mediaMatcher.matches;
   }
 
   //   loadusers(){

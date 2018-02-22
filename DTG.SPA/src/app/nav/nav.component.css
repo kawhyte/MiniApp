@@ -49,3 +49,8 @@ img{
     text-decoration: none;
     display: inline-block;
 }
+
+img {
+
+    border-radius: 50%;
+  }

@@ -1,5 +1,118 @@
-.equal {
+/* .equal {
   display: flex;
   flex-flow: row wrap;
   align-content: flex-end;
+  justify-content: space-around;
+
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+
+mat-sidenav {
+  width: 200px;
+} */
+
+.flex-container {
+  display: flex;
+   /* flex-flow: row wrap; */
+
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: space-around;
+}
+
+@media all and (max-width: 800px) {
+  .flex-container {
+      justify-content: flex-start;
+  }
+}
+
+.flex-item {
+  width: 200px;
+  height: 150px;
+  margin-top: 5px;
+
+  background: tomato;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+  line-height: 150px;
+}
+/*
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+} */
+
+
+.app-sidenav-container {
+  flex: 1;
+  position: fixed;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.app-sidenav {
+  width: 240px;
+}
+
+.wrapper {
+  margin: 50px;
+}
+  
+
+
+.example-container {
+  flex: 1;
+  position: fixed;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+/* .example-sidenav-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+} */
+
+.button3 {
+  
+  background-color: #f44336;
+
+  border: none;
+  color: white;
+
+}
+
+
+.example-sidenav {
+  width: 300px;
+  
 }

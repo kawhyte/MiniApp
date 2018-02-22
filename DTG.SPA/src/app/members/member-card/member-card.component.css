@@ -59,6 +59,21 @@ img {
   transition: all 0.3s ease-in-out;
 } */
 
+.panel-image {
+  overflow: hidden;
+  position: relative;
+}
+
+
+img {
+  width: 150px;
+ 
+  transform: scale(1, 1);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+
+}
+
 .example-card {
   min-width: 180px;
 
