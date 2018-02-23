@@ -67,21 +67,21 @@ img {
 
 img {
   width: 150px;
- 
   transform: scale(1, 1);
   transition-duration: 500ms;
-  transition-timing-function: ease-out;
+  
 
 }
 
 .example-card {
   min-width: 180px;
+  min-height: 20px;
 
 }
 
-.example-header-image {
+/* .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
+} */
 
 

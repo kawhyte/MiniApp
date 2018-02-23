@@ -1,32 +1,46 @@
 
-<app-nav (toggleSidenav)= "drawer.toggle()"></app-nav>
+<app-nav></app-nav>
 
-<mat-drawer-container class="app-sidenav-container" autosize>
-  <mat-drawer #drawer class="app-sidenav mat-elevation-z10" [opened]="!isScreenSmall()" [mode]=" isScreenSmall() ? 'over' : 'side'">
-    <mat-toolbar color="primary">
-      Filter Area
+<mat-drawer-container class="app-sidenav-container" autosize  >
+  <mat-drawer #drawer class="app-sidenav mat-elevation-z10" [opened]="!isScreenSmall()" [mode]=" isScreenSmall() ? 'over' : 'side'"
+  *ngIf="loggedIn()"
+  >
+    <mat-toolbar>
+     <h2>Dashboard</h2> 
     </mat-toolbar>
 
-    <mat-list role="list">
-      <mat-list-item role="listitem">Item 1</mat-list-item>
-      <mat-list-item role="listitem">Item 2</mat-list-item>
-      <mat-list-item role="listitem">Item 3</mat-list-item>
-      <mat-list-item role="listitem">Item 4</mat-list-item>
-      <mat-list-item role="listitem">Item 5</mat-list-item>
-    </mat-list>
+    <mat-nav-list role="list" >
+      <mat-list-item role="listitem" [routerLink]="['/members']">
+        <mat-icon mat-list-icon>face</mat-icon>  
+       <h4 mat-line>Matches</h4>
+      </mat-list-item>
+
+      <mat-list-item role="listitem" [routerLink]="['/list']">
+        <mat-icon mat-list-icon>list</mat-icon>  
+       <h4 mat-line>List</h4>
+      </mat-list-item>
+
+      <mat-list-item role="listitem" [routerLink]="['/messages']">
+        <mat-icon mat-list-icon>message</mat-icon>  
+       <h4 mat-line>Matches</h4>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+    </mat-nav-list>
 
   </mat-drawer>
 
 
-  <div class="app-sidenav-content">
+  <!-- <div class="app-sidenav-content">
     <button type="button" class="button button3" mat-button (click)="drawer.toggle()">
      Toggle Test
     </button>
-    <router-outlet></router-outlet>
+    
 
-  </div>
+  </div> -->
 
-  
+  <router-outlet></router-outlet>
 
 </mat-drawer-container>
 

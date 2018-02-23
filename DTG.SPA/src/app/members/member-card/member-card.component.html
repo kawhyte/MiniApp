@@ -1,25 +1,49 @@
+<div fxLayout="row" fxLayoutAlign="center center"  >
+
 
 <mat-card  class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <h5><mat-card-title>{{user.knownAs}}, {{user.age}}</mat-card-title> </h5>
-  
     </mat-card-header>
+
     <div class="panel-image">
     <img mat-card-lg-image src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.knownAs}}">
     <h5><small><mat-card-subtitle>Location: {{user.city}}</mat-card-subtitle></small></h5>  
   
-    <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
+        
+      <span matTooltip="View Profile">
+        <mat-list-item role="listitem" [routerLink]="['/members/', user.id]" >
+          <mat-icon mat-list-icon color="primary" >tag_faces</mat-icon>
+      </mat-list-item>
+      </span>
+
+      <span matTooltip="Like">
+        <mat-list-item role="listitem" (click)= "sendLike(user.id)">
+         <mat-icon mat-list-icon color="warn">favorite</mat-icon>
+        </mat-list-item>
+      </span>
+
+      <span matTooltip="View Messages">
+        <mat-list-item role="listitem" [routerLink]="['/members/', user.id]" [queryParams] = "{tab :'3'}" >
+          <mat-icon mat-list-icon>message</mat-icon>
+        </mat-list-item>
+      </span>
+   </mat-card-actions>
   </div>
    
   </mat-card>
 
+  
+</div>
 
-<!-- 
-<div class="panel panel-default">
+
+
+
+
+
+<!-- <div class="panel panel-default">
   <div class="panel-body">
     <div class="panel-image">
       <img src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.knownAs}}" >

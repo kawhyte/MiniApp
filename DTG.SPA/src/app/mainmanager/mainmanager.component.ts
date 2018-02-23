@@ -1,3 +1,4 @@
+import { AuthService } from './../_services/auth.service';
 import { NgZone } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,7 +14,7 @@ export class MainmanagerComponent implements OnInit {
   private mediaMatcher: MediaQueryList =
     matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`);
 
-  constructor( zone: NgZone) {
+  constructor( zone: NgZone, public authService: AuthService,) {
 
     this.mediaMatcher.addListener(mql => 
       zone.run(() => this.mediaMatcher = mql));
@@ -26,4 +27,7 @@ export class MainmanagerComponent implements OnInit {
     return this.mediaMatcher.matches;
   }
 
+  loggedIn() {
+    return this.authService.loggedIn();
+  }
 }

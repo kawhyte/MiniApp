@@ -1,4 +1,6 @@
 <div class="container">
+
+
   <div class="row">
     <h1> {{user.knownAs}}'s Profile </h1>
   </div>
@@ -42,7 +44,15 @@
 
     </div>
 
-    <div class="col-sm-8">
+
+    <mat-tab-group>
+        <mat-tab label="About {{user?.knownAs}}">Content 1</mat-tab>
+        <mat-tab label="Interest">Content 2</mat-tab>
+        <mat-tab label="Photos">Content 3</mat-tab>
+        <mat-tab label="Messages">Content 4</mat-tab>
+    </mat-tab-group>
+
+    <!-- <div class="col-sm-8">
       <div class="tab-panel">
         <tabset class ="memeber-tabset" #memberTabs>
 
@@ -66,7 +76,7 @@
 
       </div>
 
-    </div>
+    </div> -->
 
   </div>
   <div>

@@ -1,11 +1,10 @@
-.dropdown-menu li, .dropdown-toggle {
-    cursor: pointer;
-}
 
 img{
     max-height:50px;
     border:2px solid white;
     display:inline;
+    border-radius: 50%;
+   
 }
 
 .example-spacer {
@@ -50,7 +49,3 @@ img{
     display: inline-block;
 }
 
-img {
-
-    border-radius: 50%;
-  }

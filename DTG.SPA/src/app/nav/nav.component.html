@@ -1,152 +1,76 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <!-- <span class="short-spacer"></span> -->
-    <mat-toolbar color="primary">
+<div fxLayout="row" fxLayoutAlign="space-around center"  >
+
+
+  <mat-toolbar color="primary">
+
+  
+    <div>
         <button mat-button class="sidenav-toggle">
-            <mat-icon>menu</mat-icon>
-          </button>
-      DTG App
-    </mat-toolbar>
-
-
-
-    <!-- <a class="navbar-brand" [routerLink]="['/home']">DTG App</a> -->
-
-    <ul class="nav navbar-nav" *ngIf="loggedIn()">
-      <a [routerLink]="['/members']">
-        <button mat-button>Matches</button>
-      </a>
-      <a [routerLink]="['/list']">
-        <button mat-button>List</button>
-      </a>
-      <a [routerLink]="['/messages']">
-        <button mat-button>Messages</button>
-      </a>
-    </ul>
-
-    <span class="example-spacer"></span>
-
-    <ul *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
-      <li>
-        <img src="{{photoUrl}}" alt="">
-      </li>
-      <!-- <li>
-        <a (click)="false">Welcome, {{authService.decodedToken?.unique_name | titlecase}}</a>
-      </li> -->
-
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>expand_more</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-
-        <a [routerLink]="['/member/edit']">
-          <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Edit Profile</span>
-          </button>
-        </a>
-
-        <a (click)="logout()">
-          <button mat-menu-item>
-            <mat-icon>voicemail</mat-icon>
-            <span>Logout </span>
-
-          </button>
-        </a>
-      </mat-menu>
-    </ul>
-
-
-
-    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
-      <div class="form-group">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
-        </mat-form-field>
-
-
-        <mat-form-field>
-          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
-            [(ngModel)]="model.password">
-          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-        </mat-form-field>
-
-        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
-      </div>
-
-
-    </form>
-
-
-
-  </mat-toolbar-row>
-</mat-toolbar>
-<!-- 
-<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-        aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" [routerLink]="['/home']">DTG App</a>
+        <mat-icon>menu</mat-icon>
+        </button>
+        <span>DTG App Logo</span>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
+      
+      <span class="example-spacer"></span>
 
-      <ul class="nav navbar-nav" *ngIf="loggedIn()">
-        <li routerLinkActive="active">
-          <a [routerLink]="['/members']" href="#">Matches</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/list']">List</a>
-        </li>
-        <li routerLinkActive="active">
-          <a [routerLink]="['/messages']">Messages</a>
-        </li>
 
-      </ul>
 
-      <form *ngIf="!loggedIn()" #loginForm="ngForm" class="navbar-form navbar-right" (ngSubmit)="login()">
+<!-- 
+      <mat-list-item role="listitem" (click)= "sendLike(user.id)">
+          <mat-icon mat-list-icon color="warn">favorite</mat-icon>
+         </mat-list-item> -->
+
+  <div *ngIf="loggedIn()"> 
+     
+        <!-- <li>
+              <img src="{{photoUrl}}" alt="">
+            </li> -->
+        <!-- <li>
+              <a (click)="false">Welcome, {{authService.decodedToken?.unique_name | titlecase}}</a>
+            </li> -->
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+
+            <img src="{{photoUrl}}" alt="">
+
+        </button>
+        <mat-menu #menu="matMenu">
+
+          <a [routerLink]="['/member/edit']">
+            <button mat-menu-item>
+              <mat-icon>mode_edit</mat-icon>
+              <span>Edit Profile</span>
+            </button>
+          </a>
+
+          <a (click)="logout()">
+            <button mat-menu-item>
+              <mat-icon>play_for_work</mat-icon>
+              <span>Logout </span>
+
+            </button>
+          </a>
+        </mat-menu>
+      
+    </div>
+
+
+      <form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
         <div class="form-group">
-          <input type="text" placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+              [(ngModel)]="model.password">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+
+          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
         </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" class="form-control" required name="password" [(ngModel)]="model.password">
-        </div>
-        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
       </form>
 
-
-      <ul *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
-        <li>
-          <img src="{{photoUrl}}" alt="">
-
-        </li>
-        <li class="dropdown" dropdown>
-          <a (click)="false" class="dropdown-toggle" dropdownToggle>Welcome {{authService.decodedToken?.unique_name | titlecase}}
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" *dropdownMenu>
-            <li>
-              <a [routerLink]="['/member/edit']">
-                <i class="fa fa-user"></i>Edit Profile</a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <a (click)="logout()">
-                <i class="fa fa-sign-out"></i>Logout</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-    </div>
-  </div>
-
-
-
-
-</nav> -->
+  
+  </mat-toolbar>
+</div>

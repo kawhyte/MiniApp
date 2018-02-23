@@ -8,14 +8,16 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   imports: [MatButtonModule, MatToolbarModule, MatMenuModule, 
     MatIconModule, MatInputModule, MatCardModule, MatSidenavModule, 
-    MatListModule, MatSliderModule],
+    MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule],
 
   exports: [MatButtonModule, MatToolbarModule, MatMenuModule, 
     MatIconModule, MatInputModule, MatCardModule, MatSidenavModule,
-     MatListModule, MatSliderModule],
+     MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule],
 })
 export class MaterialModule { }
