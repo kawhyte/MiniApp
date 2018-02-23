@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MainmanagerComponent } from './mainmanager/mainmanager.component';
 
 
 @NgModule({
@@ -54,9 +55,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MemberEditComponent,
     PhotoEditorComponent,
     TimeAgoPipe,
-    MemberMessagesComponent
-   
-  ],
+    MemberMessagesComponent,
+    MainmanagerComponent
+],
   imports: [
     BrowserModule,
     HttpModule,

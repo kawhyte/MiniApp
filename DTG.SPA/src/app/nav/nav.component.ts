@@ -1,7 +1,7 @@
 import { RouterModule, Router } from "@angular/router";
 import { AlertifyService } from "./../_services/alertify.service";
 import { AuthService } from "./../_services/auth.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-nav",
@@ -12,6 +12,9 @@ export class NavComponent implements OnInit {
   hide = true;
   model: any = {};
   photoUrl: string;
+
+  @Output() toggleSidenav = new EventEmitter<void>();
+  
   constructor(
     public authService: AuthService,
     private alertify: AlertifyService,

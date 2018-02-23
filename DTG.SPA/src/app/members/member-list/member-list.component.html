@@ -1,43 +1,12 @@
-<!-- <div class="row">
+<div class="row">
     <div class="text-center">
       <h2>Your matches = {{pagination.totalItems}} found</h2>
     </div>
-  </div> -->
+  </div>
 
-
-  <!-- <div class ="flex-container">
-
-<div class="flex-item">1</div>
-<div class="flex-item">2</div>
-<div class="flex-item">3</div>
-<div class="flex-item">4</div>
-<div class="flex-item">5</div>
-<div class="flex-item">6</div>
-
-  </div> -->
-
-
-  <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="app-sidenav mat-elevation-z10" [opened]="!isScreenSmall()"
-    [mode]="isScreenSmall() ? 'over' : 'side'">
-<mat-toolbar color ="primary">
-Filter Area
-</mat-toolbar>
-     
-<mat-list role="list">
-  <mat-list-item role="listitem">Item 1</mat-list-item>
-  <mat-list-item role="listitem">Item 2</mat-list-item>
-  <mat-list-item role="listitem">Item 3</mat-list-item>
-  <mat-list-item role="listitem">Item 4</mat-list-item>
-  <mat-list-item role="listitem">Item 5</mat-list-item>
-</mat-list>
-
-
-
-      
 
       <div class="container">
-
+         
         <div class="row">
             <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
               <div class="form-group">
@@ -70,13 +39,22 @@ Filter Area
             </form>
           </div>
         
-        
+          <div class="row equal">
+              <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
+                <app-member-card [user]="user"></app-member-card>
+              </div>
+          </div>
        
-
-
 
 </div>
 
+<div class="text-center">
+
+    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)"
+      [(ngModel)]="pagination.currentPage" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+      lastText="&raquo;"></pagination>
+  
+  </div>
 
 
 
@@ -85,7 +63,7 @@ Filter Area
 
 
      
-    </mat-drawer>
+    <!-- </mat-drawer>
   
     <div class="example-sidenav-content">
       <button type="button" class = "button button3" mat-button (click)="drawer.toggle()">
@@ -93,7 +71,7 @@ Filter Area
       </button>
     </div>
   
-  </mat-drawer-container>
+  </mat-drawer-container> -->
 
 
 

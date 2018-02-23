@@ -1,12 +1,19 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span class="short-spacer"></span>
+    <!-- <span class="short-spacer"></span> -->
+    <mat-toolbar color="primary">
+        <button mat-button class="sidenav-toggle">
+            <mat-icon>menu</mat-icon>
+          </button>
+      DTG App
+    </mat-toolbar>
 
 
-    <a class="navbar-brand" [routerLink]="['/home']">DTG App</a>
+
+    <!-- <a class="navbar-brand" [routerLink]="['/home']">DTG App</a> -->
 
     <ul class="nav navbar-nav" *ngIf="loggedIn()">
-      <a [routerLink]="['/members']" >
+      <a [routerLink]="['/members']">
         <button mat-button>Matches</button>
       </a>
       <a [routerLink]="['/list']">
@@ -16,7 +23,7 @@
         <button mat-button>Messages</button>
       </a>
     </ul>
- 
+
     <span class="example-spacer"></span>
 
     <ul *ngIf="loggedIn()" class="nav navbar-nav navbar-right">
@@ -28,7 +35,7 @@
       </li> -->
 
       <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>expand_more</mat-icon>
+        <mat-icon>expand_more</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
 
@@ -50,24 +57,25 @@
     </ul>
 
 
-    
-        <form *ngIf="!loggedIn()" #loginForm="ngForm" class= "example-form" (ngSubmit)="login()">
-       <div class="form-group">
+
+    <form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
+      <div class="form-group">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
         </mat-form-field>
 
 
         <mat-form-field>
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password" [(ngModel)]="model.password">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+            [(ngModel)]="model.password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
         </mat-form-field>
 
         <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
       </div>
 
-      
-      </form>
+
+    </form>
 
 
 
