@@ -35,12 +35,20 @@
     </div>
 
 
+
     <div *ngIf="!loggedIn()">
-        <button class = "signin" (click)= "openSignInDialog()" >
+      <button class = "register registerButton" (click)= "openRegisterDialog()" >
+        Register
+      </button>
+    </div>
+
+    <div *ngIf="!loggedIn()">
+        <button class = "signin signinButton" (click)= "openSignInDialog()" >
           Sign in
         </button>
-        
+
       </div>
+
 
 
 

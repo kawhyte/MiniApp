@@ -71,13 +71,30 @@ export class NavComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log("dialog closed", result);
       if (result) {
-        this.openSnackBar("Login successful", "Navigate")
-          .onAction()
-          .subscribe(() => {
-            //this.router.navigate(["/members"]);
-          });
+        this.openSnackBar("Login successful","");
+      }
+      else{
+        this.openSnackBar("Incorrect credential provided","");
       }
     });
+
+
+    // dialogRef.beforeClose().subscribe(result => {
+    //   console.log("dialog closed", result);
+    //   this.authService.login(this.model).subscribe(
+    //     data => {
+    //       this.alertify.success("before successful");
+    //     },
+    //     error => {
+    //       this.alertify.error("before credential provided");
+    //     },
+    //     () => {
+    //       //this.router.navigate(["/members"]);
+    //     }
+    //   );
+
+
+    // });
   }
 
   openSnackBar(

@@ -2,7 +2,7 @@ import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../_services/auth.service";
 import { AlertifyService } from "../_services/alertify.service";
-import { MatDialogRef } from "@angular/material";
+import { MatDialogRef, MatSnackBarRef, SimpleSnackBar, MatSnackBar } from "@angular/material";
 import { FormControl, Validators } from "@angular/forms";
 
 @Component({
@@ -14,6 +14,7 @@ export class SignInDialogComponent implements OnInit {
   hide = true;
   model: any = {};
   constructor(
+    private snackBar: MatSnackBar,
     private dialogRef: MatDialogRef<SignInDialogComponent>,
     public authService: AuthService,
     private alertify: AlertifyService,
@@ -34,11 +35,11 @@ export class SignInDialogComponent implements OnInit {
   login() {
     this.authService.login(this.model).subscribe(
       data => {
-        this.alertify.success("Login successful");
-        this.dialogRef.close(null);
+      // this.alertify.success("Login successful");
+        this.dialogRef.close(true);
       },
       error => {
-        this.alertify.error("Incorrect credential provided");
+        this.alertify.error("Int credential provided"); 
       },
       () => {
         this.router.navigate(["/members"]);

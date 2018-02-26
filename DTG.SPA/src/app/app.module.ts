@@ -40,6 +40,7 @@ import { MaterialModule } from "./material.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MainmanagerComponent } from "./mainmanager/mainmanager.component";
 import { SignInDialogComponent } from "./sign-in-dialog/sign-in-dialog.component";
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,8 +60,9 @@ import { SignInDialogComponent } from "./sign-in-dialog/sign-in-dialog.component
     MainmanagerComponent,
     SignInDialogComponent,
     SignInDialogComponent,
-    SignInDialogComponent
-  ],
+    SignInDialogComponent,
+    RegisterDialogComponent
+],
   imports: [
     BrowserModule,
     HttpModule,
