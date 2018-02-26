@@ -1,7 +1,7 @@
-import { ErrorInterceptor } from './_services/error.interceptor';
-import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
-import { ListsResolver } from './_resolvers/lists.resolver';
-import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { ErrorInterceptor } from "./_services/error.interceptor";
+import { MemberMessagesComponent } from "./members/member-messages/member-messages.component";
+import { ListsResolver } from "./_resolvers/lists.resolver";
+import { PhotoEditorComponent } from "./members/photo-editor/photo-editor.component";
 import { MemberEditComponent } from "./members/member-edit/member-edit.component";
 import { NgxGalleryModule } from "ngx-gallery";
 import { MemberListResolver } from "./_resolvers/member-list.resolver";
@@ -28,18 +28,18 @@ import { RouterModule } from "@angular/router";
 import { UserService } from "./_services/User.service";
 import { MemberEditResolver } from "./_resolvers/member-edit.resolver";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards";
-import { FileUploadModule } from 'ng2-file-upload';
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import {TimeAgoPipe} from 'time-ago-pipe';
-import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
-import { MessagesResolver } from './_resolvers/message.resolver';
-import { JwtModule } from '@auth0/angular-jwt';
-import { HttpClientModule } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MainmanagerComponent } from './mainmanager/mainmanager.component';
-
+import { FileUploadModule } from "ng2-file-upload";
+import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+import { TimeAgoPipe } from "time-ago-pipe";
+import { PaginationModule } from "ngx-bootstrap/pagination/pagination.module";
+import { MessagesResolver } from "./_resolvers/message.resolver";
+import { JwtModule } from "@auth0/angular-jwt";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MaterialModule } from "./material.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MainmanagerComponent } from "./mainmanager/mainmanager.component";
+import { SignInDialogComponent } from "./sign-in-dialog/sign-in-dialog.component";
 
 @NgModule({
   declarations: [
@@ -56,8 +56,11 @@ import { MainmanagerComponent } from './mainmanager/mainmanager.component';
     PhotoEditorComponent,
     TimeAgoPipe,
     MemberMessagesComponent,
-    MainmanagerComponent
-],
+    MainmanagerComponent,
+    SignInDialogComponent,
+    SignInDialogComponent,
+    SignInDialogComponent
+  ],
   imports: [
     BrowserModule,
     HttpModule,
@@ -79,13 +82,11 @@ import { MainmanagerComponent } from './mainmanager/mainmanager.component';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('token');
+          return localStorage.getItem("token");
         },
-        whitelistedDomains: ['localhost:5000']
+        whitelistedDomains: ["localhost:5000"]
       }
     })
-
-
   ],
   providers: [
     AuthService,
@@ -100,6 +101,10 @@ import { MainmanagerComponent } from './mainmanager/mainmanager.component';
     MessagesResolver,
     ErrorInterceptor
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
+  entryComponents: [
+    SignInDialogComponent
+  ]
 })
 export class AppModule {}

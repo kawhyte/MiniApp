@@ -1,76 +1,85 @@
-<div fxLayout="row" fxLayoutAlign="space-around center"  >
-
+<div fxLayout="row" fxLayoutAlign="space-around center">
 
   <mat-toolbar color="primary">
 
-  
     <div>
-        <button mat-button class="sidenav-toggle">
+      <button mat-button class="sidenav-toggle">
         <mat-icon>menu</mat-icon>
-        </button>
-        <span>DTG App Logo</span>
+      </button>
+      <span>DTG App Logo</span>
     </div>
-      
-      <span class="example-spacer"></span>
+    <span class="example-spacer"></span>
 
+    <div *ngIf="loggedIn()">
 
-
-<!-- 
-      <mat-list-item role="listitem" (click)= "sendLike(user.id)">
-          <mat-icon mat-list-icon color="warn">favorite</mat-icon>
-         </mat-list-item> -->
-
-  <div *ngIf="loggedIn()"> 
-     
-        <!-- <li>
+      <!-- <li>
               <img src="{{photoUrl}}" alt="">
             </li> -->
-        <!-- <li>
+      <!-- <li>
               <a (click)="false">Welcome, {{authService.decodedToken?.unique_name | titlecase}}</a>
             </li> -->
 
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-
-            <img src="{{photoUrl}}" alt="">
-
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <img src="{{photoUrl}}" alt="">
+      </button>
+      <mat-menu #menu="matMenu" yPosition="below" [overlapTrigger]="false">
+        <button mat-menu-item [routerLink]="['/member/edit']">
+          <mat-icon>mode_edit</mat-icon>
+          <span>Profile</span>
         </button>
-        <mat-menu #menu="matMenu">
-
-          <a [routerLink]="['/member/edit']">
-            <button mat-menu-item>
-              <mat-icon>mode_edit</mat-icon>
-              <span>Edit Profile</span>
-            </button>
-          </a>
-
-          <a (click)="logout()">
-            <button mat-menu-item>
-              <mat-icon>play_for_work</mat-icon>
-              <span>Logout </span>
-
-            </button>
-          </a>
-        </mat-menu>
-      
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>play_for_work</mat-icon>
+          <span> Sign out </span>
+        </button>
+      </mat-menu>
     </div>
 
 
-      <form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
-        <div class="form-group">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
-          </mat-form-field>
+    <div *ngIf="!loggedIn()">
+        <button class = "signin" (click)= "openSignInDialog()" >
+          Sign in
+        </button>
+        
+      </div>
 
-          <mat-form-field>
-            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
-              [(ngModel)]="model.password">
-            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-          </mat-form-field>
 
-          <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
-        </div>
-      </form>
 
-  
+    <!-- <form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
+      
+      
+      
+      
+      
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+            [(ngModel)]="model.password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
+      </div>
+    </form> -->
+
+
+    <!-- <form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+            [(ngModel)]="model.password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
+      </div>
+    </form> -->
   </mat-toolbar>
 </div>

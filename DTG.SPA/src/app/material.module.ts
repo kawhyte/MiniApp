@@ -10,14 +10,18 @@ import {MatListModule} from '@angular/material/list';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [MatButtonModule, MatToolbarModule, MatMenuModule, 
     MatIconModule, MatInputModule, MatCardModule, MatSidenavModule, 
-    MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule],
+    MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule, 
+    MatDialogModule, MatSnackBarModule],
 
   exports: [MatButtonModule, MatToolbarModule, MatMenuModule, 
     MatIconModule, MatInputModule, MatCardModule, MatSidenavModule,
-     MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule],
+     MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule,
+      MatDialogModule,MatSnackBarModule ],
 })
 export class MaterialModule { }

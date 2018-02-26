@@ -1,7 +1,14 @@
+import { SignInDialogComponent } from "./../sign-in-dialog/sign-in-dialog.component";
 import { RouterModule, Router } from "@angular/router";
 import { AlertifyService } from "./../_services/alertify.service";
 import { AuthService } from "./../_services/auth.service";
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  MatDialog,
+  MatSnackBar,
+  MatSnackBarRef,
+  SimpleSnackBar
+} from "@angular/material";
 
 @Component({
   selector: "app-nav",
@@ -14,16 +21,19 @@ export class NavComponent implements OnInit {
   photoUrl: string;
 
   @Output() toggleSidenav = new EventEmitter<void>();
-  
+
   constructor(
     public authService: AuthService,
     private alertify: AlertifyService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
-
-    this.authService.currentPhotUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+    this.authService.currentPhotUrl.subscribe(
+      photoUrl => (this.photoUrl = photoUrl)
+    );
   }
 
   login() {
@@ -35,7 +45,7 @@ export class NavComponent implements OnInit {
         this.alertify.error("Incorrect credential provided");
       },
       () => {
-        this.router.navigate(["/members"]);
+        //this.router.navigate(["/members"]);
       }
     );
   }
@@ -51,5 +61,31 @@ export class NavComponent implements OnInit {
 
   loggedIn() {
     return this.authService.loggedIn();
+  }
+
+  openSignInDialog(): void {
+    let dialogRef = this.dialog.open(SignInDialogComponent, {
+      width: "450px"
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("dialog closed", result);
+      if (result) {
+        this.openSnackBar("Login successful", "Navigate")
+          .onAction()
+          .subscribe(() => {
+            //this.router.navigate(["/members"]);
+          });
+      }
+    });
+  }
+
+  openSnackBar(
+    message: string,
+    action: string
+  ): MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
+      duration: 5000
+    });
   }
 }

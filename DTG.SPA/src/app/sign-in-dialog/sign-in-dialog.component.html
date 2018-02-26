@@ -1,0 +1,54 @@
+<h2 mat-dialog-title>Sign in</h2>
+<mat-dialog-content>
+
+
+  <div class="example-container">
+    <mat-form-field >
+      <input matInput placeholder="Enter your Username" class="form-control" [formControl] ="name" required name="username" [(ngModel)]="model.username">
+      <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+        [(ngModel)]="model.password">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    </mat-form-field>
+  </div>
+
+
+
+
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+  <!-- 
+<form *ngIf="!loggedIn()" #loginForm="ngForm" class="example-form" (ngSubmit)="login()">
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+            [(ngModel)]="model.password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
+      </div>
+    </form> -->
+
+
+
+
+
+
+
+  <button mat-button color="primary" (click)="login()">
+    <mat-icon>save</mat-icon> Sign in
+  </button>
+  <button mat-button color="primary" (click)="dismiss()">
+    <mat-icon>cancel</mat-icon> Cancel
+  </button>
+</mat-dialog-actions>
