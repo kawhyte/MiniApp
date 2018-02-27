@@ -29,7 +29,7 @@ import { UserService } from "./_services/User.service";
 import { MemberEditResolver } from "./_resolvers/member-edit.resolver";
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards";
 import { FileUploadModule } from "ng2-file-upload";
-import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
+//import { BsDatepickerModule } from "ngx-bootstrap/datepicker";
 import { TimeAgoPipe } from "time-ago-pipe";
 import { PaginationModule } from "ngx-bootstrap/pagination/pagination.module";
 import { MessagesResolver } from "./_resolvers/message.resolver";
@@ -60,7 +60,8 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     MainmanagerComponent,
     SignInDialogComponent,
     SignInDialogComponent,
-    SignInDialogComponent,
+    SignInDialogComponent
+,
     RegisterDialogComponent
 ],
   imports: [
@@ -75,7 +76,7 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    BsDatepickerModule.forRoot(),
+    //BsDatepickerModule.forRoot(),
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
     FlexLayoutModule,
@@ -106,7 +107,7 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
   bootstrap: [AppComponent],
 
   entryComponents: [
-    SignInDialogComponent
+    SignInDialogComponent, RegisterDialogComponent
   ]
 })
 export class AppModule {}

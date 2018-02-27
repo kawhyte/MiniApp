@@ -9,6 +9,7 @@ import {
   MatSnackBarRef,
   SimpleSnackBar
 } from "@angular/material";
+import { RegisterDialogComponent } from "../register-dialog/register-dialog.component";
 
 @Component({
   selector: "app-nav",
@@ -27,6 +28,7 @@ export class NavComponent implements OnInit {
     private alertify: AlertifyService,
     private router: Router,
     private dialog: MatDialog,
+    private dialog2: MatDialog,
     private snackBar: MatSnackBar
   ) {}
 
@@ -65,7 +67,8 @@ export class NavComponent implements OnInit {
 
   openSignInDialog(): void {
     let dialogRef = this.dialog.open(SignInDialogComponent, {
-      width: "450px"
+      width: "450px",
+      disableClose:true
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -77,24 +80,16 @@ export class NavComponent implements OnInit {
         this.openSnackBar("Incorrect credential provided","");
       }
     });
+  }
 
 
-    // dialogRef.beforeClose().subscribe(result => {
-    //   console.log("dialog closed", result);
-    //   this.authService.login(this.model).subscribe(
-    //     data => {
-    //       this.alertify.success("before successful");
-    //     },
-    //     error => {
-    //       this.alertify.error("before credential provided");
-    //     },
-    //     () => {
-    //       //this.router.navigate(["/members"]);
-    //     }
-    //   );
+  openRegisterDialog(): void {
+    let dialogRef2 = this.dialog2.open(RegisterDialogComponent, {
+      disableClose:true,
+      width: "450px"
+     
+    });
 
-
-    // });
   }
 
   openSnackBar(

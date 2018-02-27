@@ -1,18 +1,18 @@
-<div fxLayout="row" fxLayoutAlign="space-around center" >
-    <div class="text-center">
-      <h4>Your matches = {{pagination.totalItems}} found</h4>
-    </div>
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div class="text-center">
+    <h4>Your matches = {{pagination.totalItems}} found</h4>
   </div>
+</div>
 
-  <div fxLayout="row" fxLayoutAlign="space-evenly center"> 
-      <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
-        <app-member-card [user]="user"></app-member-card>
-      </div>
+<div fxLayout="row" fxLayoutAlign="space-evenly center">
+  <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
+    <app-member-card [user]="user"></app-member-card>
   </div>
+</div>
 
-      <div class="container" fxLayout="row" fxLayoutAlign="space-around none">
-         
-        <!-- <div class="row">
+<div class="container" fxLayout="row" fxLayoutAlign="space-around none">
+
+  <!-- <div class="row">
             <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
               <div class="form-group">
                 <label for="minAge">Age From</label>
@@ -43,19 +43,26 @@
               </div>
             </form>
           </div> -->
-        
-     
-       
+
+
+
 
 </div>
 
 <div class="text-center">
 
-    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)"
+  <!-- <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)"
       [(ngModel)]="pagination.currentPage" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
       lastText="&raquo;"></pagination>
-  
-  </div>
+
+
+ -->
+
+  <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage" 
+  [pageSizeOptions]="[3, 5, 10, 20]" (pageChanged)="pageChanged($event)"  [(ngModel)]="pagination.currentPage">
+  </mat-paginator>
+
+</div>
 
 
 
@@ -63,8 +70,8 @@
 
 
 
-     
-    <!-- </mat-drawer>
+
+<!-- </mat-drawer>
   
     <div class="example-sidenav-content">
       <button type="button" class = "button button3" mat-button (click)="drawer.toggle()">
@@ -139,10 +146,10 @@
 
 
 
-  
 
 
-  <!-- <div class="row">
+
+<!-- <div class="row">
     <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
       <div class="form-group">
         <label for="minAge">Age From</label>
@@ -177,7 +184,7 @@
 
 
 
-  <!-- <div class="row equal">
+<!-- <div class="row equal">
     <div *ngFor="let user of users" class="col-lg-2 col-md-3 col-sm-6">
       <app-member-card [user]="user"></app-member-card>
     </div>

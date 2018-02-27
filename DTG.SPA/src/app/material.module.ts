@@ -12,16 +12,21 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
 @NgModule({
   imports: [MatButtonModule, MatToolbarModule, MatMenuModule, 
     MatIconModule, MatInputModule, MatCardModule, MatSidenavModule, 
     MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule, 
-    MatDialogModule, MatSnackBarModule],
+    MatDialogModule, MatSnackBarModule, MatRadioModule, MatDatepickerModule, 
+    MatNativeDateModule, MatPaginatorModule],
 
   exports: [MatButtonModule, MatToolbarModule, MatMenuModule, 
     MatIconModule, MatInputModule, MatCardModule, MatSidenavModule,
      MatListModule, MatSliderModule, MatTabsModule, MatTooltipModule,
-      MatDialogModule,MatSnackBarModule ],
+      MatDialogModule,MatSnackBarModule, MatRadioModule, MatDatepickerModule,
+      MatNativeDateModule, MatPaginatorModule ],
 })
 export class MaterialModule { }
