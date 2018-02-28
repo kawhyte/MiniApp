@@ -59,9 +59,6 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     MemberMessagesComponent,
     MainmanagerComponent,
     SignInDialogComponent,
-    SignInDialogComponent,
-    SignInDialogComponent
-,
     RegisterDialogComponent
 ],
   imports: [

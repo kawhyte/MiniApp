@@ -23,19 +23,7 @@ export class RegisterDialogComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router) { }
 
-
-  //name = new FormControl('', [Validators.required]);
-
-  // favoriteSeason: string;
-  // favoriteSeason2: string;
-
-  // getErrorMessage() {
-  //   return this.name.hasError('required') ? 'You must enter a value' : '';
-  // }
-
-
   ngOnInit() {
-
     this.createRegisterForm();
   }
 
@@ -83,13 +71,12 @@ export class RegisterDialogComponent implements OnInit {
         () => {
           this.authService.login(this.user).subscribe(() => {
             this.router.navigate(["/members"]);
-            //this.router.navigate(["/member-edit"]);
           });
         }
       );
     }
 
-    console.log(this.registerForm.value);
+    //console.log(this.registerForm.value);
   }
 
 

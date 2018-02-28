@@ -1,42 +1,36 @@
-<form [formGroup]='registerForm' (ngSubmit)="register()">
-  <h2 mat-dialog-title>New User Registration</h2>
-  <mat-dialog-content>
+<div class="row">
 
+
+<form [formGroup]='registerForm' (ngSubmit)="register()" id="1">
+  <h2 mat-dialog-title class="title">Sign up</h2>
+  <!-- <h5 mat-dialog-title class="title">Join us and share your favorite photo</h5> -->
+  <mat-dialog-content>
     <!-- gender -->
     <mat-radio-group class="example-radio-group" formControlName="gender">
       <label class="control-label" style="margin-right:10px">I am a: </label>
       <mat-radio-button value="male">Male</mat-radio-button>
       <mat-radio-button value="female">Female</mat-radio-button>
     </mat-radio-group>
-
     <!-- username -->
-   
-      <div>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username" [(ngModel)]="model.username" name="username"
-          formControlName="username">
-        </mat-form-field>
-      </div>
-      <!-- knownAs -->
-      <div>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Known as" [(ngModel)]="model.knownAs" name="knownAs"
-          formControlName="knownAs">
-        </mat-form-field>
-      
-
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" formControlName="username">
+      </mat-form-field>
+    </div>
+    <!-- knownAs -->
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Known as" [(ngModel)]="model.knownAs" name="knownAs" formControlName="knownAs">
+      </mat-form-field>
       <!-- date of birth -->
       <div>
         <mat-form-field>
-          <input matInput  [matDatepicker]="dp3" placeholder="Date of Birth" [(ngModel)]="model.dateOfBirth" name="dateOfBirth"
-            formControlName="dateOfBirth">
+          <input matInput [matDatepicker]="dp3" placeholder="Date of Birth" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth">
           <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
           <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>
       </div>
-
     </div>
-
     <!-- <div>
       <mat-form-field class="example-full-width">
         <textarea matInput placeholder="Address 2"></textarea>
@@ -45,14 +39,12 @@
     <div class="example-full-width" cellspacing="0">
       <div>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="City" [(ngModel)]="model.city" name="city"
-          formControlName="city">
+          <input matInput placeholder="City" [(ngModel)]="model.city" name="city" formControlName="city">
         </mat-form-field>
       </div>
       <div>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Country" [(ngModel)]="model.country" name="country"
-          formControlName="country">
+          <input matInput placeholder="Country" [(ngModel)]="model.country" name="country" formControlName="country">
         </mat-form-field>
       </div>
       <!-- <div>
@@ -62,7 +54,6 @@
         </mat-form-field>
       </div> -->
     </div>
-
     <!-- password -->
     <div>
       <mat-form-field>
@@ -71,124 +62,26 @@
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
       </mat-form-field>
     </div>
-
     <!-- confirm password -->
     <div>
-      <mat-form-field>
-        <input matInput placeholder="Confirm password" [type]="hide ? 'confirmPassword' : 'text'" class="form-control" required name="confirmpassword"
-          formControlName="confirmPassword" [(ngModel)]="model.confirmPassword">
-        <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
-    </div>
 
-    <button mat-button color="primary"  type="submit" [disabled]="!registerForm.valid">
-        <mat-icon>save</mat-icon> Register
-      </button>
-      <button mat-button color="primary" (click)="dismiss()">
-        <mat-icon>cancel</mat-icon> Cancel
-      </button>
+        <mat-form-field>
+            <input matInput placeholder="Confirm your password" [type]="hideConfirm ? 'password' : 'text'" class="form-control" required name="hideConfirm"
+              formControlName="hideConfirm" [(ngModel)]="model.confirmPassword">
+            <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility' : 'visibility_off'}}</mat-icon>
+          </mat-form-field>
+    </div> 
   </mat-dialog-content>
-
-  <!-- <mat-dialog-actions>
-    <button mat-button color="primary" (click)="register()">
-      <mat-icon>save</mat-icon> Register
-    </button>
-    <button mat-button color="primary" (click)="dismiss()">
-      <mat-icon>cancel</mat-icon> Cancel
-    </button>
-  </mat-dialog-actions> -->
-  
 </form>
 <!-- <p> Form Value: {{registerForm.value | json}}</p>
 <p> Form status: {{registerForm.status | json}}</p> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-<form>   
-<h2 mat-dialog-title>New User Registration</h2>
-<mat-dialog-content > -->
-
-<!-- gender -->
-<!-- <mat-radio-group  class="example-radio-group" [(ngModel)]="favoriteSeason">
-    <label class="control-label" style="margin-right:10px">I am a: </label>
-    <mat-radio-button value="Male">Male</mat-radio-button>
-    <mat-radio-button value="Female">Female</mat-radio-button>
-  </mat-radio-group> -->
-
-<!-- username -->
-<!-- <div class="example-container">
-    <mat-form-field >
-      <input matInput placeholder="Username" class="form-control" required name="username" [(ngModel)]="model.username">
-    </mat-form-field>
-  </div> -->
-
-<!-- knownAs -->
-<!-- <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Known as" class="form-control" required name="username" [(ngModel)]="model.knownAs">
-    </mat-form-field>
-  </div> -->
-
-<!-- date of birth -->
-<!-- <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Date of Birth" class="form-control" required name="username" [(ngModel)]="model.dateOfBirth">
-    </mat-form-field>
-  </div> -->
-
-<!-- city -->
-<!-- <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="City" class="form-control" required name="username" [(ngModel)]="model.city">
-    </mat-form-field>
-  </div> -->
-
-<!-- country -->
-<!-- <div class="example-container">
-    <mat-form-field>
-      <input matInput placeholder="Country" class="form-control" required name="username" [(ngModel)]="model.country">
-    </mat-form-field>
-  </div> -->
-
-<!-- password -->
-<!-- <div>
-    <mat-form-field>
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
-        [(ngModel)]="model.password">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field>
-      <input matInput placeholder="Confirm password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
-        [(ngModel)]="model.confirmPassword">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    </mat-form-field>
-  </div>
-
-  
-</mat-dialog-content>
-
+<!-- submit/cancel button -->
 <mat-dialog-actions>
-
-  <button mat-button color="primary" (click)="register()">
-    <mat-icon>save</mat-icon> Register
+  <button mat-button class="signinButton" type="submit" [disabled]="!registerForm.valid" form="1">
+     Get Started
   </button>
-  <button mat-button color="primary" (click)="dismiss()">
-    <mat-icon>cancel</mat-icon> Cancel
+  <button mat-button class="cancelButton" (click)="dismiss()">
+     Cancel
   </button>
 </mat-dialog-actions>
-</form>
-<div class="example-selected-value">Your favorite season is: {{favoriteSeason2}}</div> -->
+</div>
