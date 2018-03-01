@@ -35,27 +35,18 @@ export class SignInDialogComponent implements OnInit {
       {
         username: ["", Validators.required],
         password: ["",Validators.required,]
-        // confirmPassword: ["", Validators.required]
       }
-      // { validator: this.passwordMatchValidator }
     );
   }
-
-
-
-
-
-
-
 
   login() {
     this.authService.login(this.model).subscribe(
       data => {
-      // this.alertify.success("Login successful");
         this.dialogRef.close(true);
       },
       error => {
-        this.alertify.error("Int credential provided"); 
+        console.log("Incorrect credential provided")
+        //this.alertify.error("Incorrect credential provided"); 
       },
       () => {
         this.router.navigate(["/members"]);
