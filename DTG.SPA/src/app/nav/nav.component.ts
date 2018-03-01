@@ -72,12 +72,12 @@ export class NavComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log("dialog closed", result);
+      
       if (result) {
         this.openSnackBar("Login successful","");
       }
       else{
-        this.openSnackBar("Incorrect credential provided","");
+        console.log("Incorrect credential provided","");
       }
     });
   }
@@ -87,9 +87,7 @@ export class NavComponent implements OnInit {
     let dialogRef2 = this.dialog2.open(RegisterDialogComponent, {
       disableClose:true,
       width: "450px"
-     
     });
-
   }
 
   openSnackBar(
