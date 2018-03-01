@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { MatSnackBarRef, SimpleSnackBar } from '@angular/material';
 import { UserService } from './../../_services/User.service';
 import { AuthService } from './../../_services/auth.service';
 import { Input } from '@angular/core';
@@ -13,7 +16,7 @@ import { AlertifyService } from '../../_services/alertify.service';
 export class MemberCardComponent implements OnInit {
 @Input()user:User;
   constructor(private authService:AuthService, private userService: UserService,
-    private alertify: AlertifyService) { }
+    private alertify: AlertifyService, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,9 +24,26 @@ export class MemberCardComponent implements OnInit {
 
   sendLike(id: number) {
     this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
-      this.alertify.success('You have liked ' + this.user.knownAs);
+      this.openSnackBar(this.user.knownAs + ' photo added to you favorite',"Navigate to your favorite list")
+      .onAction().subscribe(() => { 
+      this.router.navigate(['/list']);}
+
+    
+    );
+      //this.alertify.success('You have liked ' + this.user.knownAs);
     }, error => {
-      this.alertify.error(error);
+      this.openSnackBar(this.user.knownAs + ' was alredy added to you favorite',"Navigate to your favorite list")
+      //  .onAction().subscribe(() => { 
+      // this.router.navigate(['/list'])},
+    });
+  }
+
+  openSnackBar(
+    message: string,
+    action: string
+  ): MatSnackBarRef<SimpleSnackBar> {
+    return this.snackBar.open(message, action, {
+      duration: 5000
     });
   }
 }

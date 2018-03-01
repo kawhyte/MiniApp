@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div class="container" fxLayout="row" fxLayoutAlign="space-around none">
+<div class="container" fxLayout="row" fxLayoutAlign= "center center">
 
   <!-- <div class="row">
             <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
@@ -45,24 +45,24 @@
           </div> -->
 
 
+          <div >
 
+            <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)"
+                [(ngModel)]="pagination.currentPage" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                lastText="&raquo;"></pagination>
+          
+          
+          
+          
+            <!-- <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage" 
+            [pageSizeOptions]="[3, 5, 10, 20]" (pageChanged)="pageChanged($event)"  [(ngModel)]="pagination.currentPage">
+            </mat-paginator> -->
+          
+          </div>
+          
 
 </div>
 
-<div class="text-center">
-
-  <!-- <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage" (pageChanged)="pageChanged($event)"
-      [(ngModel)]="pagination.currentPage" class="pagination-sm" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
-      lastText="&raquo;"></pagination>
-
-
- -->
-
-  <mat-paginator [length]="pagination.totalItems" [pageSize]="pagination.itemsPerPage" 
-  [pageSizeOptions]="[3, 5, 10, 20]" (pageChanged)="pageChanged($event)"  [(ngModel)]="pagination.currentPage">
-  </mat-paginator>
-
-</div>
 
 
 

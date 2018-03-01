@@ -69,8 +69,6 @@ img {
   width: 150px;
   transform: scale(1, 1);
   transition-duration: 500ms;
-  
-
 }
 
 .example-card {
@@ -78,10 +76,10 @@ img {
   min-height: 20px;
 
 }
-
+/* 
 .example-header-image {
   background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
-}
+} */
 
 
