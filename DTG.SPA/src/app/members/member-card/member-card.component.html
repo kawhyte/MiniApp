@@ -1,18 +1,19 @@
-<div fxLayout="row" fxLayoutAlign="center center"  >
-
 
 <mat-card  class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <h5><mat-card-title>{{user.knownAs}} , {{user.age}}</mat-card-title> </h5>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>{{user.knownAs}}</mat-card-title>
+      <mat-card-subtitle>Years at Google: {{user.age}}</mat-card-subtitle>
     </mat-card-header>
+    <img mat-card-image src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.knownAs}}">
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <p>
+        Department: {{user.city}}
+      </p>
+    </mat-card-content>
 
-    <div class="panel-image">
-    <img mat-card-lg-image src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.knownAs}}">
-    <h5><small><mat-card-subtitle>Department: {{user.city}}</mat-card-subtitle></small></h5>  
-  
     <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
-        
       <span matTooltip="Employee Profile">
         <mat-list-item role="listitem" [routerLink]="['/members/', user.id]" >
           <mat-icon mat-list-icon >tag_faces</mat-icon>
@@ -25,18 +26,18 @@
         </mat-list-item>
       </span>
 
-      <span matTooltip="View Messages">
+      <span matTooltip="Private Messages">
         <mat-list-item role="listitem" [routerLink]="['/members/', user.id]" [queryParams] = "{tab :'3'}" >
           <mat-icon mat-list-icon>message</mat-icon>
         </mat-list-item>
       </span>
    </mat-card-actions>
-  </div>
-   
+
+  
   </mat-card>
 
   
-</div>
+
 
 
 
