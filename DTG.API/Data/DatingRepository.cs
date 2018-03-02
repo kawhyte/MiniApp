@@ -59,17 +59,13 @@ namespace DTG.API.Data
                 users = users.Where(u => u.Likee.Any(l => l.LikeeId == u.Id));
             }
 
-            if (userParams.MinAge != 18 || userParams.MaxAge != 99)
-            {
-                //     users = users.Where
-                //    (u => u.DateOfBirth.CalculateAge() >= userParams.MinAge
-                //    && u.DateOfBirth.CalculateAge() <= userParams.MaxAge);
-
+            //if (userParams.MinAge != 18 || userParams.MaxAge != 99)
+           // {
                 var min = DateTime.Today.AddYears(-userParams.MaxAge - 1);
                 var max = DateTime.Today.AddYears(-userParams.MinAge);
 
                 users = users.Where(u => u.DateOfBirth >= min && u.DateOfBirth <= max);
-            }
+           // }
             if (!string.IsNullOrEmpty(userParams.OrderBy))
             {
                 switch (userParams.OrderBy)

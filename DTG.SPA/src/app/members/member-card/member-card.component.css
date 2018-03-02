@@ -99,3 +99,14 @@ img {
   background-size: cover;
 }
 
+.title {
+  color: #673ab7;
+  width: 100%;
+  float: left;
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  
+  position: relative;
+}

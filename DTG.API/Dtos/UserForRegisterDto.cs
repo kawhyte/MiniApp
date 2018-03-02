@@ -18,6 +18,8 @@ namespace DTG.API.Dtos
 
         [Required]
         public string KnownAs { get; set; }
+        [Required]
+        public string KnownAsLast { get; set; }
 
         [Required]
         public DateTime DateOfBirth { get; set; }
