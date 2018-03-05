@@ -32,6 +32,8 @@ export class RegisterDialogComponent implements OnInit {
       {
         gender: ["male"],
         username: ["", Validators.required],
+        firstname: ["", Validators.required],
+        lastname: ["", Validators.required],
         knownAs: ["", Validators.required],
         dateOfBirth: [null, Validators.required],
         city: ["", Validators.required],

@@ -7,7 +7,7 @@ namespace DTG.API.Models
         public string TelephoneNumber { get; set; }
         public string Extension { get; set; }
         public string Cellular { get; set; }
-        public User User { get; set; }
-        public int UserId { get; set; }
+       // public User User { get; set; }
+        //public int UserId { get; set; }
     }
 }

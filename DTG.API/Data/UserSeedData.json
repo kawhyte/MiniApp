@@ -30,16 +30,17 @@
     "Contact": [
       {
         "email": "fred@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "954-665-7689",
+        "cellular": "567-987-1234",
         "extension":
-          "123"
+          "999"
       }
     ]
   },
   {
     "Username": "Aida",
     "Gender": "female",
+    "CurrentRole": "Human Resource II",
     "DateOfBirth": "2012-10-18",
     "Password": "password",
     "KnownAs": "Dada",
@@ -68,16 +69,17 @@
      "Contact": [
       {
         "email": "baker@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "854-665-7689",
+        "cellular": "767-987-1299",
         "extension":
-          "123"
+          "185"
       }
     ]
   },
   {
     "Username": "Susie",
     "Gender": "female",
+    "CurrentRole": "System Administrator II",
     "KnownAsLast": "Brian",
     "DateOfBirth": "2015-05-21",
     "Password": "password",
@@ -105,16 +107,17 @@
      "Contact": [
       {
         "email": "will@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "884-665-6689",
+        "cellular": "167-987-1234",
         "extension":
-          "123"
+          "777"
       }
     ]
   },
   {
     "Username": "Nichole",
     "Gender": "female",
+    "CurrentRole": "CRS Manager",
     "DateOfBirth": "2016-03-10",
     "Password": "password",
     "KnownAs": "White K",
@@ -143,15 +146,16 @@
       {
         "email": "WhiteK@software.com",
         "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "cellular": "226-987-1234",
         "extension":
-          "123"
+          "922"
       }
     ]
   },
   {
     "Username": "Bridget",
     "Gender": "female",
+    "CurrentRole": "CRS",
     "DateOfBirth": "2017-07-31",
     "Password": "password",
     "KnownAs": "Bridget",
@@ -179,10 +183,10 @@
     "Contact": [
       {
         "email": "bridget@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "666-665-7689",
+        "cellular": "444-987-1234",
         "extension":
-          "123"
+          "527"
       }
     ]
   },
@@ -217,16 +221,17 @@
      "Contact": [
       {
         "email": "juan@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "637-665-7689",
+        "cellular": "111-987-1234",
         "extension":
-          "123"
+          "882"
       }
     ]
   },
   {
     "Username": "Omar",
     "Gender": "male",
+    "CurrentRole": "Web Designer",
     "DateOfBirth": "2012-08-27",
     "Password": "password",
     "KnownAs": "Om Omy",
@@ -255,16 +260,17 @@
      "Contact": [
       {
         "email": "omar@software.com",
-        "telephoneNumber": "9546657689",
+        "telephoneNumber": "666-777-1111",
         "cellular": "5679871234",
         "extension":
-          "123"
+          "369"
       }
     ]
   },
   {
     "Username": "Kenny",
     "Gender": "male",
+    "CurrentRole": "UI Designer",
     "DateOfBirth": "2005-12-16",
     "Password": "password",
     "KnownAs": "Ken",
@@ -290,16 +296,17 @@
     "Contact": [
       {
         "email": "kenny@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "222-333-7777",
+        "cellular": "999-000-4444",
         "extension":
-          "123"
+          "523"
       }
     ]
   },
   {
     "Username": "Boyer",
     "Gender": "male",
+    "CurrentRole": "Network Architect",
     "DateOfBirth": "2008-12-02",
     "Password": "password",
     "KnownAs": "Oyer",
@@ -327,16 +334,17 @@
     "Contact": [
       {
         "email": "boyer@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "999-000-5555",
+        "cellular": "999-000-4444",
         "extension":
-          "123"
+          "189"
       }
     ]
   },
   {
     "Username": "Johnson",
     "Gender": "male",
+    "CurrentRole": "Brand Designer",
     "DateOfBirth": "2010-07-17",
     "Password": "password",
     "KnownAs": "John",
@@ -363,10 +371,10 @@
     "Contact": [
       {
         "email": "John@software.com",
-        "telephoneNumber": "9546657689",
-        "cellular": "5679871234",
+        "telephoneNumber": "888-999-8888",
+        "cellular": "666-777-9999",
         "extension":
-          "123"
+          "113"
       }
     ]
   }

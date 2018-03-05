@@ -17,6 +17,19 @@
         <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" formControlName="username">
       </mat-form-field>
     </div>
+
+    <!-- firstname -->
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="FirstName" [(ngModel)]="model.firstname" name="firstname" formControlName="firstname">
+      </mat-form-field>
+    </div>
+    <!-- lastname -->
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="LastName" [(ngModel)]="model.lastname" name="lastname" formControlName="lastname">
+      </mat-form-field>
+    </div>
     <!-- knownAs -->
     <div>
       <mat-form-field class="example-full-width">
@@ -64,17 +77,16 @@
     </div>
     <!-- confirm password -->
     <div>
-
         <mat-form-field>
-            <input matInput placeholder="Confirm your password" [type]="hideConfirm ? 'password' : 'text'" class="form-control" required name="hideConfirm"
-              formControlName="hideConfirm" [(ngModel)]="model.confirmPassword">
+            <input matInput placeholder="Confirm your password" [type]="hideConfirm ? 'password' : 'text'" class="form-control" required name="password"
+              formControlName="confirmPassword" [(ngModel)]="model.confirmPassword">
             <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility' : 'visibility_off'}}</mat-icon>
           </mat-form-field>
     </div> 
   </mat-dialog-content>
 </form>
-<!-- <p> Form Value: {{registerForm.value | json}}</p>
-<p> Form status: {{registerForm.status | json}}</p> -->
+<p> Form Value: {{registerForm.value | json}}</p>
+<p> Form status: {{registerForm.status | json}}</p>
 <!-- submit/cancel button -->
 <mat-dialog-actions>
   <button mat-button class="signinButton" type="submit" [disabled]="!registerForm.valid" form="1">
