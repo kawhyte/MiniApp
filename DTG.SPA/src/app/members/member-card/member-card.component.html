@@ -1,20 +1,28 @@
 <mat-card  class="example-card">
     <mat-card-header>
-      <!-- <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title class ="title"> {{user.LastName}}, {{user.FirstName}}</mat-card-title>
-      <mat-card-subtitle>{{user.CurrentRole}}</mat-card-subtitle>
-      
-    </mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title class ="title">  {{user.firstName}} A. {{user.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{user.currentRole}}</mat-card-subtitle>
+      </mat-card-header>
+
     <img mat-card-image src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.knownAs}}">
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    
+   
     <mat-card-content>
+
+      <!-- <p>Contact: {{user.contact}}</p> -->
       <p>
-        Department: {{user.city}}
-        Years at Google: {{user.age}}
+        Email: {{user.currentRole}}
+        
+        <!-- Years at Google: {{user.age}} -->
       </p>
+
+      <p> Telephone: {{user.city}}</p>
     </mat-card-content>
 
     <mat-card-actions fxLayout="row" fxLayoutAlign="space-around center">
+
       <span matTooltip="Employee Profile">
         <mat-list-item role="listitem" [routerLink]="['/members/', user.id]" >
           <mat-icon mat-list-icon >tag_faces</mat-icon>

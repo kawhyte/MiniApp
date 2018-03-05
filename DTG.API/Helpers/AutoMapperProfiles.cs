@@ -28,6 +28,8 @@ namespace DTG.API.Helpers
 
             CreateMap<Photo, PhotoForDetailDto>();
 
+            CreateMap<Contact, ContactForListDto>().ReverseMap();
+
             CreateMap<UserForUpdateDto, User>();
             CreateMap<PhotoForCreationDto, Photo>();
             CreateMap<Photo, PhotoForReturnDto>();

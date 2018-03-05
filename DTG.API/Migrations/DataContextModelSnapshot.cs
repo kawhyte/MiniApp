@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
 namespace DTG.API.Migrations
@@ -24,11 +22,11 @@ namespace DTG.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Cellular");
+                    b.Property<string>("Cellular");
 
                     b.Property<string>("Email");
 
-                    b.Property<int>("Extension");
+                    b.Property<string>("Extension");
 
                     b.Property<string>("TelephoneNumber");
 

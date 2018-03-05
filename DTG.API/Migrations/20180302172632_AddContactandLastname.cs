@@ -19,9 +19,9 @@ namespace DTG.API.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Cellular = table.Column<int>(nullable: false),
+                    Cellular = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: true),
-                    Extension = table.Column<int>(nullable: false),
+                    Extension = table.Column<string>(nullable: false),
                     TelephoneNumber = table.Column<string>(nullable: true),
                     UserId = table.Column<int>(nullable: false)
                 },

@@ -22,6 +22,7 @@ export class MemberCardComponent implements OnInit {
   }
 
 
+
   sendLike(id: number) {
     this.userService.sendLike(this.authService.decodedToken.nameid, id).subscribe(data => {
       this.openSnackBar(this.user.knownAs + ' photo added to you favorite',"Navigate to your favorite list")

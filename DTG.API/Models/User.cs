@@ -39,6 +39,7 @@ namespace DTG.API.Models
         public User()
         {
             Photos = new Collection<Photo>();
+            Contact = new Collection <Contact>();
         }
     }
 }

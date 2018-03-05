@@ -1,4 +1,6 @@
+import { Contact } from './Contact';
 import { Photo } from "./Photo";
+
 
 export interface User {
   // user main view
@@ -17,4 +19,8 @@ export interface User {
   introduction?: string;
   lookingFor?: string;
   photos?: Photo[];
+  lastName: string;
+  firstName: string;
+  currentRole: string;
+  contact: Contact[];
 }

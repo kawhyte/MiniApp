@@ -26,6 +26,15 @@
         "description":
           "Ut dolore minim ipsum minim exercitation anim aliqua esse."
       }
+    ],
+    "Contact": [
+      {
+        "email": "fred@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
+      }
     ]
   },
   {
@@ -54,6 +63,16 @@
         "description":
           "Culpa sint consectetur in deserunt occaecat nostrud in commodo ad deserunt in minim."
       }
+    ],
+
+     "Contact": [
+      {
+        "email": "baker@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
+      }
     ]
   },
   {
@@ -81,6 +100,16 @@
         "isMain": true,
         "description": "Esse aliquip enim nisi culpa sunt."
       }
+    ],
+
+     "Contact": [
+      {
+        "email": "will@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
+      }
     ]
   },
   {
@@ -107,6 +136,16 @@
         "isMain": true,
         "description":
           "Adipisicing consequat consequat sit aute officia commodo officia esse dolore dolore anim consequat nisi excepteur."
+      }
+    ],
+
+     "Contact": [
+      {
+        "email": "WhiteK@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
       }
     ]
   },
@@ -136,6 +175,15 @@
         "description":
           "Proident reprehenderit est enim proident ad exercitation irure eu laboris exercitation aute voluptate dolore adipisicing."
       }
+    ],
+    "Contact": [
+      {
+        "email": "bridget@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
+      }
     ]
   },
   {
@@ -163,6 +211,16 @@
         "isMain": true,
         "description":
           "Culpa commodo proident do dolor cillum pariatur eiusmod cillum reprehenderit do Lorem nulla do."
+      }
+    ],
+
+     "Contact": [
+      {
+        "email": "juan@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
       }
     ]
   },
@@ -192,6 +250,16 @@
         "description":
           "Magna ea dolore eu incididunt eu commodo culpa sunt magna in magna est."
       }
+    ],
+
+     "Contact": [
+      {
+        "email": "omar@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
+      }
     ]
   },
   {
@@ -217,6 +285,15 @@
         "url": "https://randomuser.me/api/portraits/men/23.jpg",
         "isMain": true,
         "description": "Duis esse irure nulla ullamco est id consequat Lorem."
+      }
+    ],
+    "Contact": [
+      {
+        "email": "kenny@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
       }
     ]
   },
@@ -246,6 +323,15 @@
         "description":
           "Sint aliqua ut culpa ipsum deserunt elit anim voluptate fugiat."
       }
+    ],
+    "Contact": [
+      {
+        "email": "boyer@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
+      }
     ]
   },
   {
@@ -272,6 +358,15 @@
         "isMain": true,
         "description":
           "Laboris magna mollit consequat deserunt consectetur culpa commodo anim est ea sunt."
+      }
+    ],
+    "Contact": [
+      {
+        "email": "John@software.com",
+        "telephoneNumber": "9546657689",
+        "cellular": "5679871234",
+        "extension":
+          "123"
       }
     ]
   }

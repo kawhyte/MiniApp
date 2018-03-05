@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace DTG.API.Dtos
 {
@@ -19,5 +20,7 @@ namespace DTG.API.Dtos
         public string City { get; set; }
         public string Country { get; set; }
         public string PhotoUrl { get; set; }
+
+        public ICollection<ContactForListDto> Contact { get; set; }
     }
 }
