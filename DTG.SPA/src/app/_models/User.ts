@@ -8,6 +8,7 @@ export interface User {
   username: string;
   knownAs: string;
   age: number;
+  dateOfEmployment: number;
   gender: string;
   created: Date;
   lastActive: Date;

@@ -17,7 +17,7 @@ export class MemberCardComponent implements OnInit {
   @Input() user: User;
   email: string;
   telephoneNumber: string;
-  extension: string;
+  extension?: string;
 
   constructor(
     private authService: AuthService,

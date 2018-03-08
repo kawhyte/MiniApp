@@ -15,7 +15,7 @@ import "rxjs/add/operator/catch";
 
 @Injectable()
 export class MessagesResolver implements Resolve<Message[]> {
-  pageSize = 5;
+  pageSize = 10;
   pageNumber = 1;
   messageContainer = "Unread";
 

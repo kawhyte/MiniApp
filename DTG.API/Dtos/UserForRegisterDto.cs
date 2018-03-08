@@ -16,7 +16,7 @@ namespace DTG.API.Dtos
         [Required]
         public string Gender { get; set; }
 
-        [Required]
+        // [Required]
         public string KnownAs { get; set; }
         
         public string KnownAsLast { get; set; }
@@ -25,13 +25,18 @@ namespace DTG.API.Dtos
         [Required]
         public string Firstname { get; set; }
 
-        [Required]
+        // [Required]
         public DateTime DateOfBirth { get; set; }
 
         [Required]
+        public DateTime DateOfEmployment { get; set; }
+
+        public string CurrentRole { get; set; }
+
+        // [Required]
         public string City { get; set; }
 
-        [Required]
+        // [Required]
         public string Country { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }

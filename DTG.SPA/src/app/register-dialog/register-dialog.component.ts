@@ -34,10 +34,12 @@ export class RegisterDialogComponent implements OnInit {
         username: ["", Validators.required],
         firstname: ["", Validators.required],
         lastname: ["", Validators.required],
-        knownAs: ["", Validators.required],
-        dateOfBirth: [null, Validators.required],
-        city: ["", Validators.required],
-        country: ["", Validators.required],
+        currentRole: ["", Validators.required],
+        // knownAs: ["", Validators.required],
+        // dateOfBirth: [null, Validators.required],
+        dateOfEmployment: [null, Validators.required],
+        // city: ["", Validators.required],
+        // country: ["", Validators.required],
         password: [
           "",
           [
@@ -73,6 +75,7 @@ export class RegisterDialogComponent implements OnInit {
         () => {
           this.authService.login(this.user).subscribe(() => {
             this.router.navigate(["/members"]);
+            // this.router.navigate(["/members/edit"]); 
           });
         }
       );

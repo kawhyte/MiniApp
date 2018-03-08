@@ -6,7 +6,7 @@ namespace DTG.API.Helpers
 
         public int PageNumber { get; set; } = 1;
 
-        private int pageSize = 10;
+        private int pageSize = 20;
         public int PageSize
         {
             get { return pageSize; }

@@ -1,99 +1,127 @@
 <div class="row">
 
 
-<form [formGroup]='registerForm' (ngSubmit)="register()" id="1">
-  <h2 mat-dialog-title class="title">Sign up</h2>
-  <!-- <h5 mat-dialog-title class="title">Join us and share your favorite photo</h5> -->
-  <mat-dialog-content>
-    <!-- gender -->
-    <mat-radio-group class="example-radio-group" formControlName="gender">
-      <label class="control-label" style="margin-right:10px">I am a: </label>
-      <mat-radio-button value="male">Male</mat-radio-button>
-      <mat-radio-button value="female">Female</mat-radio-button>
-    </mat-radio-group>
-    <!-- username -->
-    <div>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" formControlName="username">
-      </mat-form-field>
-    </div>
-
-    <!-- firstname -->
-    <div>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="FirstName" [(ngModel)]="model.firstname" name="firstname" formControlName="firstname">
-      </mat-form-field>
-    </div>
-    <!-- lastname -->
-    <div>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="LastName" [(ngModel)]="model.lastname" name="lastname" formControlName="lastname">
-      </mat-form-field>
-    </div>
-    <!-- knownAs -->
-    <div>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Known as" [(ngModel)]="model.knownAs" name="knownAs" formControlName="knownAs">
-      </mat-form-field>
-      <!-- date of birth -->
+  <form [formGroup]='registerForm' (ngSubmit)="register()" id="1">
+    <h2 mat-dialog-title class="title">Sign up</h2>
+    <!-- <h5 mat-dialog-title class="title">Join us and share your favorite photo</h5> -->
+    <mat-dialog-content>
+      <!-- gender -->
+      <mat-radio-group class="example-radio-group" formControlName="gender">
+        <label class="control-label" style="margin-right:10px">I am a: </label>
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+      <!-- username -->
       <div>
-        <mat-form-field>
-          <input matInput [matDatepicker]="dp3" placeholder="Date of Birth" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth">
-          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Username" [(ngModel)]="model.username" name="username" formControlName="username">
         </mat-form-field>
       </div>
-    </div>
-    <!-- <div>
+
+      <!-- firstname -->
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="FirstName" [(ngModel)]="model.firstname" name="firstname" formControlName="firstname">
+        </mat-form-field>
+      </div>
+      <!-- lastname -->
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="LastName" [(ngModel)]="model.lastname" name="lastname" formControlName="lastname">
+        </mat-form-field>
+      </div>
+      <!-- knownAs -->
+      <!-- <div>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Known as (Alias)" [(ngModel)]="model.knownAs" name="knownAs" formControlName="knownAs">
+        </mat-form-field>
+      </div> -->
+
+        <!-- date of birth -->
+        <!-- <div>
+          
+          <mat-form-field>
+            <input matInput [matDatepicker]="dp3" placeholder="Date of Birth" [(ngModel)]="model.dateOfBirth" name="dateOfBirth" formControlName="dateOfBirth">
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div> -->
+
+     
+      <!-- <div>
       <mat-form-field class="example-full-width">
         <textarea matInput placeholder="Address 2"></textarea>
       </mat-form-field>
     </div> -->
-    <div class="example-full-width" cellspacing="0">
-      <div>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="City" [(ngModel)]="model.city" name="city" formControlName="city">
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Country" [(ngModel)]="model.country" name="country" formControlName="country">
-        </mat-form-field>
-      </div>
-      <!-- <div>
+
+      <div class="example-full-width" cellspacing="0">
+        <!-- <div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="City" [(ngModel)]="model.city" name="city" formControlName="city">
+          </mat-form-field>
+        </div> -->
+        <!-- <div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Country" [(ngModel)]="model.country" name="country" formControlName="country">
+          </mat-form-field>
+        </div> -->
+        <!-- <mat-divider></mat-divider> -->
+        <div>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Current Role" [(ngModel)]="model.currentRole" name="currentRole" formControlName="currentRole">
+            </mat-form-field>
+          </div>
+
+
+
+
+
+
+
+        <!-- date of employment -->
+        <div>
+          <mat-form-field>
+            <input matInput [matDatepicker]="dp4" placeholder="Date of Employment" [(ngModel)]="model.dateOfEmployment" name="dateOfEmployment"
+              formControlName="dateOfEmployment">
+            <mat-datepicker-toggle matSuffix [for]="dp4"></mat-datepicker-toggle>
+            <mat-datepicker #dp4 disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <!-- <div>
         <mat-form-field class="example-full-width">
           <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
           <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
         </mat-form-field>
       </div> -->
-    </div>
-    <!-- password -->
-    <div>
-      <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
-          formControlName="password" [(ngModel)]="model.password">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
-    </div>
-    <!-- confirm password -->
-    <div>
+      </div>
+      <!-- password -->
+      <div>
         <mat-form-field>
-            <input matInput placeholder="Confirm your password" [type]="hideConfirm ? 'password' : 'text'" class="form-control" required name="password"
-              formControlName="confirmPassword" [(ngModel)]="model.confirmPassword">
-            <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility' : 'visibility_off'}}</mat-icon>
-          </mat-form-field>
-    </div> 
-  </mat-dialog-content>
-</form>
-<p> Form Value: {{registerForm.value | json}}</p>
-<p> Form status: {{registerForm.status | json}}</p>
-<!-- submit/cancel button -->
-<mat-dialog-actions>
-  <button mat-button class="signinButton" type="submit" [disabled]="!registerForm.valid" form="1">
-     Get Started
-  </button>
-  <button mat-button class="cancelButton" (click)="dismiss()">
-     Cancel
-  </button>
-</mat-dialog-actions>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" class="form-control" required name="password"
+            formControlName="password" [(ngModel)]="model.password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+      </div>
+      <!-- confirm password -->
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Confirm your password" [type]="hideConfirm ? 'password' : 'text'" class="form-control" required
+            name="password" formControlName="confirmPassword" [(ngModel)]="model.confirmPassword">
+          <mat-icon matSuffix (click)="hideConfirm = !hideConfirm">{{hideConfirm ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+  </form>
+  <p> Form Value: {{registerForm.value | json}}</p>
+  <p> Form status: {{registerForm.status | json}}</p>
+  <!-- submit/cancel button -->
+  <mat-dialog-actions>
+    <button mat-button class="signinButton" type="submit" [disabled]="!registerForm.valid" form="1">
+      Get Started
+    </button>
+    <button mat-button class="cancelButton" (click)="dismiss()">
+      Cancel
+    </button>
+  </mat-dialog-actions>
 </div>

@@ -14,7 +14,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ListsResolver implements Resolve<User[]> {
 
-  pageSize = 5;
+  pageSize = 10;
   pageNumber = 1;
   likesParam ='Likers';
 
