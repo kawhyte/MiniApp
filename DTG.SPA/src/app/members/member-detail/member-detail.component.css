@@ -1,4 +1,4 @@
-.profile-image {
+/* .profile-image {
     margin: 25px;
     width: 85%;
     height: 85%;
@@ -18,4 +18,34 @@
 
 .btn-group-justified>.btn-group .btn {
     width: 95%;
-}
+} */
+
+
+#outer-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+  }
+  #outer-grid > div {
+    background-color: red;
+    color: white;
+    font-size: 4vw;
+    padding: 5px;
+  }
+  #inner-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+  }
+  #inner-grid > div {
+    background: salmon;
+    padding: 10px;
+  }
+
+  .profile-image thumbnail > img {
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }

@@ -23,5 +23,5 @@ export interface User {
   lastName: string;
   firstName: string;
   currentRole: string;
-  contact: Contact[];
+  contact?: Contact[];
 }

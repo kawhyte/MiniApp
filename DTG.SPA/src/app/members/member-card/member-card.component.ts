@@ -7,6 +7,7 @@ import { Input } from "@angular/core";
 import { Component, OnInit } from "@angular/core";
 import { User } from "../../_models/User";
 import { AlertifyService } from "../../_services/alertify.service";
+import { Contact } from "../../_models/Contact";
 
 @Component({
   selector: "app-member-card",
@@ -15,9 +16,10 @@ import { AlertifyService } from "../../_services/alertify.service";
 })
 export class MemberCardComponent implements OnInit {
   @Input() user: User;
+  @Input() contact: Contact[];
   email: string;
   telephoneNumber: string;
-  extension?: string;
+  extension: string;
 
   constructor(
     private authService: AuthService,
