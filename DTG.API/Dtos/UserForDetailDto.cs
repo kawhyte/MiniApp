@@ -26,6 +26,11 @@ namespace DTG.API.Dtos
         public string Country { get; set; }
         public string PhotoUrl { get; set; }
 
+        public string Email { get; set; }
+        public string TelephoneNumber { get; set; }
+        public string Extension { get; set; }
+        public string Cellular { get; set; }
+
         public ICollection<PhotoForDetailDto> Photos { get; set; }
 
 

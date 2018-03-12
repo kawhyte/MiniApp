@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { User } from "../../_models/User";
 import { UserService } from "../../_services/User.service";
 import { AlertifyService } from "../../_services/alertify.service";
@@ -7,6 +7,8 @@ import { NgxGalleryOptions, NgxGalleryAnimation } from "ngx-gallery";
 import { NgxGalleryImage } from "ngx-gallery";
 import { TabsetComponent } from "ngx-bootstrap";
 import { ViewChild } from "@angular/core";
+import { Contact } from "../../_models/Contact";
+
 
 @Component({
   selector: "app-member-detail",
@@ -16,6 +18,10 @@ import { ViewChild } from "@angular/core";
 export class MemberDetailComponent implements OnInit {
   @ViewChild("memberTabs") memberTabs: TabsetComponent;
   user: User;
+  @Input() contact: Contact;
+  email: string;
+  telephoneNumber: string;
+  extension: string;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
 
@@ -23,9 +29,19 @@ export class MemberDetailComponent implements OnInit {
     private userService: UserService,
     private alertify: AlertifyService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+
+    //this.messages = [];
+   // this.messages = [{id: 1, email: "k@d.com", telephoneNumber: 'text', extension: 'Hallo Welt!', cellular:"123456"}];
+
+  }
 
   ngOnInit() {
+    //this.messages = [{id: 1, email: "k@d.com", telephoneNumber: 'text', extension: 'Hallo Welt!', cellular:"123456"}];
+   // let contact = [{email: this.user.contact[0].email}];
+   // this.email = this.contact.email;
+    // this.telephoneNumber = this.user.contact[0].telephoneNumber;
+    // this.extension = this.user.contact[0].extension;
     this.route.data.subscribe(data => {
       this.user = data["user"];
     });
@@ -47,6 +63,8 @@ export class MemberDetailComponent implements OnInit {
       }
     ];
     this.galleryImages = this.getImages();
+
+    
   }
 
   getImages() {

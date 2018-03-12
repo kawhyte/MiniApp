@@ -16,6 +16,11 @@ export interface User {
   city: string;
   country: string;
   // optional detailed view
+  email?: string;
+  telephoneNumber: string;
+  extension?: string;
+  cellular: string;
+
   interest?: string;
   introduction?: string;
   lookingFor?: string;

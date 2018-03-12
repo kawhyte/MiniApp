@@ -23,29 +23,84 @@
 
 #outer-grid {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-  }
-  #outer-grid > div {
-    background-color: red;
-    color: white;
-    font-size: 4vw;
-    padding: 5px;
-  }
-  #inner-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20em 6em 6em  6em ;
+    grid-template-columns: 20em 6em  6em  6em;
     grid-gap: 5px;
-  }
-  #inner-grid > div {
-    background: salmon;
-    padding: 10px;
+    border: solid 4px black
   }
 
-  .profile-image thumbnail > img {
+
+.grid-item {
+
+ box-sizing: border-box;
+ font-size: 1.2em;
+ padding: 1em;
+ text-align: center;
+ grid-column: 1/2;
+ grid-row: 1/10;
+}
+.grid-item2 {
+ box-sizing: border-box;
+ font-size: 1.2em;
+ padding: 1em;
+ text-align: center;
+ grid-column: 2/10;
+ grid-row: 1/10;
+}
+
+
+  .profile-image {
+
     width: 200px;
-    display: block;
+    height: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    /* display: block;
     margin-left: auto;
     margin-right: auto;
+    padding: 5em;
+    text-align: left; */
   }
+
+
+  .header-image{
+
+    display: block;
+    margin: 0 auto;
+  }
+
+  .label {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 700;
+    color: #a2a2a2;
+    opacity: 0.9;
+    
+}
+
+.label, .value {
+  display: block;
+  text-align: left;
+}
+
+
+
+.div > span { display: inline-block; }
+.div { margin-left: 100px; }
+
+.content{
+
+  text-align: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+

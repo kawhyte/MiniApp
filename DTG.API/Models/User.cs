@@ -26,6 +26,11 @@ namespace DTG.API.Models
         public string City { get; set; }
         public string Country { get; set; }
 
+         public string Email { get; set; }
+        public string TelephoneNumber { get; set; }
+        public string Extension { get; set; }
+        public string Cellular { get; set; }
+
         public ICollection<Photo> Photos { get; set; }
         public ICollection<Contact> Contact { get; set; }
         public ICollection<Like> Liker { get; set; }
