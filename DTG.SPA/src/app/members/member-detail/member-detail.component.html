@@ -1,20 +1,188 @@
 <div id="outer-grid">
 
-  <mat-card class="grid-item">
-    <mat-card-header class="header-image">
-      <div mat-card-avatar class="example-header-image"></div>
-      <!-- <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title> -->
-      <p>
+
+  <div class="grid-item1">
+    <img class="profile-image" src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.firstName}}">
+  </div>
+
+  <div class="grid-item2">
+    <div>
+      <h3 class="head">{{user.firstName}} {{user.lastName}}</h3>
+    </div>
+    <div>
+      <p class="value">{{user.currentRole}}</p>
+    </div>
+    <div>
+      <p class="value"> Department | </p>
+    </div>
+    <div>
+      <p class="value"> Office Location | </p>
+    </div>
+    <div>
+      <p class="value"> Employee since {{user.created | date : 'mediumDate'}}()</p>
+    </div>
+    <div>
+      <p class="interest">{{user.introduction}}</p>
+    </div>
+  </div>
+
+  <div class="grid-item3">
+    <div>
+      <span class="label">EMAIL</span>
+      <p class="value">{{user.email}}</p>
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <span class="label">Office</span>
+      <p class="value">{{user.telephoneNumber}}, Extension: {{user.extension}}</p>
+      <mat-divider></mat-divider>
+    </div>
+    <div>
+      <span class="label">Cellular</span>
+      <p class="value">{{user.cellular}}</p>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="divider">
+    <mat-divider></mat-divider>
+  </div>
+
+
+
+
+
+  <!-- <div class="grid-item4">
+      <div>
+        <span class="label">EMAIL</span>
+        <p class="value">{{user.email}}</p>
+        <mat-divider></mat-divider>
+      </div>
+      <div>
+        <span class="label">Office</span>
+        <p class="value">{{user.telephoneNumber}}, Extension: {{user.extension}}</p>
+        <mat-divider></mat-divider>
+      </div>
+      <div>
+        <span class="label">Cellular</span>
+        <p class="value">{{user.cellular}}</p>
+        <mat-divider></mat-divider>
+      </div>
+    </div> -->
+
+  <div class="grid-item5">
+
+
+    <mat-tab-group>
+      <mat-tab label="General">
+        <span class="label">first name:</span>
+        <p class="value">{{user.firstName}}</p>
+        <span class="label">last name:</span>
+        <p class="value">{{user.lastName}}</p>
+
+        <span class="label">Titles</span>
+        <p class="value">Lead Engineer (April 02, 2016-Present)</p>
+        <p class="value">Engineer(May 15,2010 - April 02, 2016)</p>
+
+        <span class="label">Employment type</span>
+        <p class="value">Full Time</p>
+      </mat-tab>
+
+
+      <mat-tab label="Messages">
+          <h4> Description</h4>
+         <app-member-messages [userId]="user.id"></app-member-messages>
+      </mat-tab>
+
+      <mat-tab label="Goals">
+        <h4> Description</h4>
+        <p> {{user.interest}}</p>
+      </mat-tab>
+      <mat-tab label="Vacation Calendar (PTO)">
+        <h4> Description</h4>
+        <p> {{user.interest}}</p>
+      </mat-tab>
+      <mat-tab label="Teams">
+        <h4> Description</h4>
+        <p> {{user.interest}}</p>
+      </mat-tab>
+      <mat-tab label="Resources">
+        <h4> Description</h4>
+        <p> {{user.interest}}</p>
+      </mat-tab>
+
+    </mat-tab-group>
+
+
+
+
+    <!-- <div>
+          <p class="label">first name:</p>
+          <p class="value">{{user.firstName}}</p>
+      </div>
+      <div>
+          <span class="label">last name:</span>
+          <p class="value">{{user.lastName}}</p>
+      </div>
+      <div>
+        <span class="label">Titles</span>
+        <p class="value">Lead Engineer (April 02, 2016-Present)</p>
+        <p class="value">Engineer(May 15,2010 - April 02, 2016)</p>
+
+      </div>
+      <div>
+        <span class="label">Employment type</span>
+        <p class="value">Full Time</p>
+      </div> -->
+
+
+  </div>
+
+
+
+  <div>
+
+
+
+    <!-- <div>
+        <span class="label">TIME AT COMPANY</span>
+        <p class="value">{{user.firstName}}</p>
+      </div> -->
+    <!-- <div>
+        <span class="label">Fun fact</span>
+        <p class="value">{{user.introduction}}</p>
+      </div>
+
+      <div>
+        <span class="label">Last Active:</span>
+        <p class="value">{{user.lastActive | timeAgo}}</p>
+      </div>
+
+      </div>
+
+
+  <!-- <mat-card class="grid-item"> -->
+
+
+
+
+
+
+
+    <!-- <mat-card-header class="header-image">
+      <div mat-card-avatar class="example-header-image"></div> -->
+    <!-- <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title> -->
+    <!-- <p>
         <img class="profile-image" src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.firstName}}">
-      </p>
-    </mat-card-header>
+      </p> -->
+    <!-- </mat-card-header> -->
     <!-- <p> 
     <img class="profile-image" src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.firstName}}">
     </p> -->
 
-    <mat-card-content class="content">
+    <!-- <mat-card-content class="content"> -->
 
-      <div>
+    <!-- <div>
         <span class="label">full name:</span>
         <p class="value">{{user.firstName}} {{user.lastName}}</p>
       </div>
@@ -36,13 +204,13 @@
         <span class="label">Cellular</span>
         <p class="value">{{user.cellular}}</p>
 
-      </div>
+      </div> -->
 
-      <!-- <div>
+    <!-- <div>
         <span class="label">TIME AT COMPANY</span>
         <p class="value">{{user.firstName}}</p>
       </div> -->
-      <div>
+    <!-- <div>
         <span class="label">Fun fact</span>
         <p class="value">{{user.introduction}}</p>
       </div>
@@ -58,11 +226,11 @@
       <button mat-button>LIKE</button>
       <button mat-button>SHARE</button>
     </mat-card-actions>
-  </mat-card>
+  </mat-card> -->
 
 
 
-  <div class="grid-item2">
+    <!-- <div class="grid-item2">
 
     <mat-tab-group>
       <mat-tab label="About {{user?.knownAs}}">
@@ -75,10 +243,10 @@
       <mat-tab label="Interest">
         <h4> Description</h4>
         <p> {{user.interest}}</p>
-      </mat-tab>
+      </mat-tab> -->
 
 
-      <!-- <div class="row">
+    <!-- <div class="row">
           <div class="col-sm-4">
             <div class="panel panel-default">
               <img class="profile-image thumbnail" src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.firstName}}">
@@ -132,21 +300,21 @@
               </mat-tab> -->
 
 
-      <!-- <mat-tab label="Photos">
+    <!-- <mat-tab label="Photos">
                 
                   <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
               
               </mat-tab> -->
 
 
-      <mat-tab label="Messages">
+    <!-- <mat-tab label="Messages">
         <app-member-messages [userId]="user.id"></app-member-messages>
       </mat-tab>
     </mat-tab-group>
 
 
-  </div>
-  <!-- <div id="inner-grid">
+  </div> -->
+    <!-- <div id="inner-grid">
     <div>
       
       
@@ -157,7 +325,7 @@
     <div>8</div>
   </div> -->
 
-</div>
+  </div>
 
 
 
@@ -172,7 +340,7 @@
 
 
 
-<!-- <div class="container">
+  <!-- <div class="container">
 
 
   <div class="row"> -->
@@ -180,7 +348,7 @@
 
 
 
-<!-- <div class="col-sm-4">
+  <!-- <div class="col-sm-4">
       <div class="panel panel-default">
         <img class="profile-image thumbnail" src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.firstName}}">
         <div class="panel-body">
@@ -216,9 +384,9 @@
         </div>
       </div> -->
 
-<!-- </div> -->
+  <!-- </div> -->
 
-<!-- 
+  <!-- 
   <mat-tab-group>
     <mat-tab label="About {{user?.knownAs}}">
       <h4> Description</h4>
@@ -233,7 +401,7 @@
     </mat-tab> -->
 
 
-<!-- <div class="row">
+  <!-- <div class="row">
     <div class="col-sm-4">
       <div class="panel panel-default">
         <img class="profile-image thumbnail" src="{{user.photoUrl ? user.photoUrl : '../../../assets/user.png'}}" alt="{{user.firstName}}">
@@ -287,42 +455,42 @@
         </mat-tab> -->
 
 
-<!-- <mat-tab label="Photos">
+  <!-- <mat-tab label="Photos">
           
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
         
         </mat-tab> -->
 
 
-<!-- <mat-tab label="Messages">
+  <!-- <mat-tab label="Messages">
       <app-member-messages [userId]="user.id"></app-member-messages>
     </mat-tab>
   </mat-tab-group> -->
 
-<div class="col-sm-8">
-      <div class="tab-panel">
-        <tabset class ="memeber-tabset" #memberTabs>
-         <tab heading="About {{user?.knownAs}}">
-            <h4> Description</h4>
-            <p> {{user.introduction}} </p>
-            <h4> Looking For</h4>
-            <p> {{user.lookingFor}}</p>
-          </tab>
-          <tab heading="Interest">
-            <h4> Description</h4>
-            <p> {{user.interest}}</p>
-          </tab> 
-          <tab heading="Photos">
-             <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery> 
-          </tab>
-          <tab heading="Messages">
-            <app-member-messages [userId] = "user.id"></app-member-messages>
-          </tab> 
-        </tabset>
-
-      </div>
+  <!-- <div class="col-sm-8">
+    <div class="tab-panel">
+      <tabset class="memeber-tabset" #memberTabs>
+        <tab heading="About {{user?.knownAs}}">
+          <h4> Description</h4>
+          <p> {{user.introduction}} </p>
+          <h4> Looking For</h4>
+          <p> {{user.lookingFor}}</p>
+        </tab>
+        <tab heading="Interest">
+          <h4> Description</h4>
+          <p> {{user.interest}}</p>
+        </tab>
+        <tab heading="Photos">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+        </tab>
+        <tab heading="Messages">
+          <app-member-messages [userId]="user.id"></app-member-messages>
+        </tab>
+      </tabset>
 
     </div>
 
-<!-- </div>
+  </div> -->
+
+  <!-- </div>
 <div> -->
