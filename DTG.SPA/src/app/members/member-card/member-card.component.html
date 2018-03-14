@@ -22,19 +22,19 @@
 
     <span matTooltip="Employee Profile">
       <mat-list-item role="listitem" [routerLink]="['/members/', user.id]">
-        <mat-icon mat-list-icon>tag_faces</mat-icon>
+        <mat-icon mat-list-icon>person_pin</mat-icon>
       </mat-list-item>
     </span>
     
     <span matTooltip="Add to Favorite">
       <mat-list-item role="listitem" (click)="sendLike(user.id)">
-        <mat-icon mat-list-icon>save</mat-icon>
+        <mat-icon mat-list-icon>person_add</mat-icon>
       </mat-list-item>
     </span>
    
     <span matTooltip="Private Messages">
       <mat-list-item role="listitem" [routerLink]="['/members/', user.id]" [queryParams]="{tab :'3'}">
-        <mat-icon mat-list-icon>message</mat-icon>
+        <mat-icon mat-list-icon>mail</mat-icon>
       </mat-list-item>
     </span>
   </mat-card-actions>
