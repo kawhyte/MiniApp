@@ -4,12 +4,14 @@ using AutoMapper;
 using DTG.API.Data;
 using DTG.API.Dtos;
 using DTG.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DTG.API.Controllers
 {
-
+    //[AllowAnonymous]
+    //[Route("api/[controller]")]
     public class MakesController : Controller
     {
         private readonly DataContext _context;
@@ -25,7 +27,6 @@ namespace DTG.API.Controllers
         [HttpGet("/api/makes")]
         public async Task<IEnumerable<MakeDto>> GetMakes()
         {
-
             var makes = await _context.Makes.Include(m => m.Models).ToListAsync();
             return Mapper.Map<List<Make>, List<MakeDto>>(makes);
         }

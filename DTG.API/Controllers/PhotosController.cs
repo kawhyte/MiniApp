@@ -19,7 +19,6 @@ namespace DTG.API.Controllers
 
     public class PhotosController : Controller
     {
-
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryconfig;

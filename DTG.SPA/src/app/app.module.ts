@@ -1,3 +1,4 @@
+import { VehicleService } from './_services/vehicle.service';
 import { ErrorInterceptor } from "./_services/error.interceptor";
 import { MemberMessagesComponent } from "./members/member-messages/member-messages.component";
 import { ListsResolver } from "./_resolvers/lists.resolver";
@@ -41,6 +42,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MainmanagerComponent } from "./mainmanager/mainmanager.component";
 import { SignInDialogComponent } from "./sign-in-dialog/sign-in-dialog.component";
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
+import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     MemberMessagesComponent,
     MainmanagerComponent,
     SignInDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    VehicleFormComponent
 ],
   imports: [
     BrowserModule,
@@ -99,7 +102,9 @@ import { RegisterDialogComponent } from './register-dialog/register-dialog.compo
     PreventUnsavedChanges,
     ListsResolver,
     MessagesResolver,
-    ErrorInterceptor
+    ErrorInterceptor,
+    VehicleService
+  
   ],
   bootstrap: [AppComponent],
 
