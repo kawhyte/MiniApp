@@ -7,10 +7,6 @@ namespace DTG.API.Helpers {
     public class AutoMapperProfiles: Profile {
         public AutoMapperProfiles() {
             
-            CreateMap < Make, MakeDto > ();
-            CreateMap < Model, ModelDto > ();
-
-
             CreateMap < User, UserForListDto > ()
                 .ForMember(dest => dest.PhotoUrl, opt => {
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
@@ -28,10 +24,11 @@ namespace DTG.API.Helpers {
                     opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
                 });
 
+            CreateMap < Make, MakeDto > ();
+            CreateMap < Model, ModelDto > ();
+            CreateMap < Feature, FeatureDto > ();
             CreateMap < Photo, PhotoForDetailDto > ();
-
             CreateMap < Contact, ContactForListDto > ().ReverseMap();
-
             CreateMap < UserForUpdateDto, User > ();
             CreateMap < PhotoForCreationDto, Photo > ();
             CreateMap < Photo, PhotoForReturnDto > ();

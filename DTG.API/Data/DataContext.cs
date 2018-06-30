@@ -11,7 +11,7 @@ namespace DTG.API.Data
         {
 
         }
-
+        public DbSet<Feature> Features {get; set;}
         public DbSet<Make> Makes {get; set;}
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
