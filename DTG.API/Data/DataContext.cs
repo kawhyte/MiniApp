@@ -6,11 +6,8 @@ namespace DTG.API.Data
 {
     public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions<DataContext> options)
-            : base(options)
-        {
-
-        }
+       
+        public DbSet<Vehicle> Vehicles {get; set;}
         public DbSet<Feature> Features {get; set;}
         public DbSet<Make> Makes {get; set;}
         public DbSet<Value> Values { get; set; }
@@ -20,8 +17,17 @@ namespace DTG.API.Data
         public DbSet<Like> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }
 
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options)
+        {
+
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            builder.Entity<VehicleFeature>().HasKey(vf => 
+              new { vf.VehicleId, vf.FeatureId });
+
             builder.Entity<Like>()
             .HasKey(k => new { k.LikerId, k.LikeeId });
 
