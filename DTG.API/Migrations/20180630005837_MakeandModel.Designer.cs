@@ -11,9 +11,10 @@ using System;
 namespace DTG.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180630005837_MakeandModel")]
+    partial class MakeandModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +60,7 @@ namespace DTG.API.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<int>("Name");
 
                     b.HasKey("Id");
 
@@ -103,7 +104,7 @@ namespace DTG.API.Migrations
 
                     b.Property<int>("MakeId");
 
-                    b.Property<string>("Name");
+                    b.Property<int>("Name");
 
                     b.HasKey("Id");
 

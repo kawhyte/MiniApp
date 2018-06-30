@@ -11,6 +11,8 @@ namespace DTG.API.Data
         {
 
         }
+
+        public DbSet<Make> Makes {get; set;}
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
