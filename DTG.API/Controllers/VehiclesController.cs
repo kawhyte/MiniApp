@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using DTG.API.Data;
@@ -63,7 +64,7 @@ namespace DTG.API.Controllers
             if (vehicle == null)
                 return NotFound();
 
-            vehicle = _mapper.Map<SaveVehicleDto, Vehicle>(vehicleDto, vehicle);
+            _mapper.Map<SaveVehicleDto, Vehicle>(vehicleDto, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
             await _unitOfWork.CompleteAsync();
@@ -101,6 +102,6 @@ namespace DTG.API.Controllers
             return Ok(vehicleProject);
         }
 
-
+     
     }
 }

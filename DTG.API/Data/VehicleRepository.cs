@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DTG.API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -38,5 +39,7 @@ namespace DTG.API.Data
         {
             _context.Remove(vehicle);
         }
+
+
     }
 }

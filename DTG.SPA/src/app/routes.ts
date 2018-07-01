@@ -40,6 +40,7 @@ export const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
 
   { path: "vehicles/new", component: VehicleFormComponent },
+  { path: "vehicles/:id", component: VehicleFormComponent },
   
 
 
