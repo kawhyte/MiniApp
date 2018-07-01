@@ -4,17 +4,14 @@ using DTG.API.Models;
 
 namespace DTG.API.Dtos
 {
-    public class MakeDto
+    //Return a vehicle make and all its associated models
+    public class MakeDto : KeyValuePairDto
     {
-          public int Id { get; set;} 
-       // [Required]
-       // [StringLength(255)]
-        public string Name { get; set; }
-        public ICollection <ModelDto> Models { get; set; }
+        public ICollection <KeyValuePairDto> Models { get; set; }
 
         public MakeDto()
         {
-            Models = new Collection<ModelDto>();
+            Models = new Collection<KeyValuePairDto>();
         }
     }
 }

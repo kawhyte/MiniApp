@@ -24,7 +24,7 @@ namespace DTG.API.Helpers {
                     opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
                 });
 
-            CreateMap<VehicleDto, Vehicle>()
+            CreateMap<SaveVehicleDto, Vehicle>()
               .ForMember(v => v.Id, opt => opt.Ignore())
               .ForMember(v => v.ContactName, opt => opt.MapFrom(vr => vr.Contact.Name))
               .ForMember(v => v.ContactEmail, opt => opt.MapFrom(vr => vr.Contact.Email))
@@ -50,8 +50,9 @@ namespace DTG.API.Helpers {
 
             // Domain to API Data Transfer Object
             CreateMap < Make, MakeDto > ();
-            CreateMap < Model, ModelDto > ();
-            CreateMap < Feature, FeatureDto > ();
+            CreateMap<Make, KeyValuePairDto>();
+            CreateMap < Model, KeyValuePairDto > ();
+            CreateMap < Feature, KeyValuePairDto > ();
             CreateMap < Photo, PhotoForDetailDto > ();
             CreateMap < Contact, ContactForListDto > ().ReverseMap();
             CreateMap < Photo, PhotoForReturnDto > ();
@@ -61,9 +62,14 @@ namespace DTG.API.Helpers {
                 .ForMember(m => m.RecipientPhotoUrl, opt =>
                     opt.MapFrom(u => u.Recipient.Photos.FirstOrDefault(p => p.IsMain).Url));
 
-            CreateMap<Vehicle, VehicleDto>()
+            CreateMap<Vehicle, SaveVehicleDto>()
               .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone } ))
               .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureId)));
+
+            CreateMap<Vehicle, VehicleDto>()
+              .ForMember(vr => vr.Make, opt => opt.MapFrom(v => v.Model.Make))
+              .ForMember(vr => vr.Contact, opt => opt.MapFrom(v => new ContactResource { Name = v.ContactName, Email = v.ContactEmail, Phone = v.ContactPhone } ))
+              .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairDto { Id = vf.Feature.Id, Name = vf.Feature.Name })));
 
 
         }

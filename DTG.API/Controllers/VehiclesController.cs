@@ -5,6 +5,7 @@ using DTG.API.Data;
 using DTG.API.Dtos;
 using DTG.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DTG.API.Controllers
 {
@@ -12,30 +13,94 @@ namespace DTG.API.Controllers
     public class VehiclesController : Controller
     {
         private readonly IMapper _mapper;
-        private readonly DataContext _context;
+        private readonly IVehicleRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public VehiclesController(IMapper mapper, DataContext context)
+        public VehiclesController(IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork)
         {
-            _context = context;
+            _unitOfWork = unitOfWork;
+            _repository = repository;
             _mapper = mapper;
-
         }
         [HttpPost]
-        public async Task<IActionResult> CreateVehicleProject([FromBody] VehicleDto vehicleDto)
+        public async Task<IActionResult> CreateVehicleProject([FromBody] SaveVehicleDto vehicleDto)
         {
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var vehicle = _mapper.Map<VehicleDto, Vehicle>(vehicleDto);
+            var vehicle = _mapper.Map<SaveVehicleDto, Vehicle>(vehicleDto);
             vehicle.LastUpdate = DateTime.Now;
 
-            _context.Vehicles.Add(vehicle);
-            await _context.SaveChangesAsync();
+            _repository.Add(vehicle);
+            await _unitOfWork.CompleteAsync();
 
-            var result =  _mapper.Map<Vehicle, VehicleDto>(vehicle);
+
+            vehicle = await _repository.GetVehicle(vehicle.Id);
+            // Added to repository
+            /* vehicle = await _context.Vehicles
+            .Include(v => v.Features)
+                .ThenInclude(vf => vf.Feature)
+            .Include(v => v.Model)
+                .ThenInclude(m => m.Make)
+            .SingleOrDefaultAsync(v => v.Id == vehicle.Id) */
+
+            var result = _mapper.Map<Vehicle, VehicleDto>(vehicle);
             return Ok(result);
 
         }
+
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateVehicleProject(int id, [FromBody] SaveVehicleDto vehicleDto)
+        {
+            if (ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var vehicle = await _repository.GetVehicle(id);
+
+            if (vehicle == null)
+                return NotFound();
+
+            vehicle = _mapper.Map<SaveVehicleDto, Vehicle>(vehicleDto, vehicle);
+            vehicle.LastUpdate = DateTime.Now;
+
+            await _unitOfWork.CompleteAsync();
+            vehicle =  await _repository.GetVehicle(vehicle.Id);
+            var result = _mapper.Map<Vehicle, VehicleDto>(vehicle);
+            return Ok(result);
+        }
+
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteVehicleProject(int id)
+        {
+            var vehicle = await _repository.GetVehicle(id, includeRelatedItem: false);
+
+            if (vehicle == null)
+                return NotFound();
+
+            _repository.Remove(vehicle);
+            await _unitOfWork.CompleteAsync();
+
+            return Ok(id);
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetVehicleProject(int id)
+        {
+            var vehicle = await _repository.GetVehicle(id);
+
+            if (vehicle == null)
+                return NotFound();
+
+            var vehicleProject = _mapper.Map<Vehicle, VehicleDto>(vehicle);
+
+            return Ok(vehicleProject);
+        }
+
+
     }
 }

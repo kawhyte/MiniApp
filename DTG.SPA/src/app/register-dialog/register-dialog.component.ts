@@ -30,7 +30,7 @@ export class RegisterDialogComponent implements OnInit {
   createRegisterForm() {
     this.registerForm = this.fb.group(
       {
-        gender: ["male"],
+        gender: ["buyer"],
         username: ["", Validators.required],
         firstname: ["", Validators.required],
         lastname: ["", Validators.required],
