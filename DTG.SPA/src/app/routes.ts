@@ -14,6 +14,7 @@ import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards"
 import { ListsResolver } from "./_resolvers/lists.resolver";
 import { MessagesResolver } from "./_resolvers/message.resolver";
 import { VehicleFormComponent } from "./vehicle-form/vehicle-form.component";
+import { VehicleListComponent } from "./vehicle-list/vehicle-list.component";
 
 
 
@@ -37,9 +38,12 @@ import { VehicleFormComponent } from "./vehicle-form/vehicle-form.component";
 // ];
 
 export const appRoutes: Routes = [
-  { path: "home", component: HomeComponent },
 
+  { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
+  { path: "home", component: HomeComponent },
+  { path: "vehicles", component: VehicleListComponent },
   { path: "vehicles/new", component: VehicleFormComponent },
+  
   { path: "vehicles/:id", component: VehicleFormComponent },
   
 
@@ -70,5 +74,5 @@ export const appRoutes: Routes = [
     ]
   },
 
-  { path: "**", redirectTo: "home", pathMatch: "full" }
+  //{ path: "**", redirectTo: "home", pathMatch: "full" }
 ];

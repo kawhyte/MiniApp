@@ -1,3 +1,4 @@
+import { Vehicle } from './../_models/vehicle';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http} from '@angular/http';
@@ -27,6 +28,11 @@ getVehicle(id) {
     return this.http.get<any[]>( this.baseUrl +'vehicles/' + id)
       .map(res => res);
   }
+
+  getVehicles() {
+     return this.http.get<any[]>( this.baseUrl + 'vehicles')
+           .map(res => res);
+       }
 
 
 

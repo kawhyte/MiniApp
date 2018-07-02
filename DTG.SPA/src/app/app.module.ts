@@ -43,6 +43,7 @@ import { MainmanagerComponent } from "./mainmanager/mainmanager.component";
 import { SignInDialogComponent } from "./sign-in-dialog/sign-in-dialog.component";
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { VehicleListComponent } from './vehicle-list/vehicle-list.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
     MainmanagerComponent,
     SignInDialogComponent,
     RegisterDialogComponent,
-    VehicleFormComponent
+    VehicleFormComponent,
+    VehicleListComponent
 ],
   imports: [
     BrowserModule,

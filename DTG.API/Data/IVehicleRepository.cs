@@ -9,6 +9,8 @@ namespace DTG.API.Data
         Task<Vehicle> GetVehicle(int id , bool includeRelatedItem = true);
         void Add(Vehicle vehicle);
         void Remove(Vehicle vehicle);
+
+        Task<IEnumerable<Vehicle>> GetVehicles();
         
     }
 }

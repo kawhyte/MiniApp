@@ -102,6 +102,16 @@ namespace DTG.API.Controllers
             return Ok(vehicleProject);
         }
 
+
+
+[HttpGet]
+    public async Task<IEnumerable<VehicleDto>> GetVehicles()
+    {
+      var vehicles = await _repository.GetVehicles();
+ 
+     return _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleDto>>(vehicles);
+    }
+
      
     }
 }
