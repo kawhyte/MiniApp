@@ -8,6 +8,8 @@ namespace DTG.API.Helpers {
         public AutoMapperProfiles() {
             
              // API Data Transfer Object to Domain
+            CreateMap<VehicleFilterDto, Filter>();
+
             CreateMap < User, UserForListDto > ()
                 .ForMember(dest => dest.PhotoUrl, opt => {
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);

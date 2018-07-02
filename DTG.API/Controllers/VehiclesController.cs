@@ -105,9 +105,10 @@ namespace DTG.API.Controllers
 
 
 [HttpGet]
-    public async Task<IEnumerable<VehicleDto>> GetVehicles()
+    public async Task<IEnumerable<VehicleDto>> GetVehicles(VehicleFilterDto vehicleFilterDto)
     {
-      var vehicles = await _repository.GetVehicles();
+     var filter = _mapper.Map<VehicleFilterDto, Filter>(vehicleFilterDto);
+      var vehicles = await _repository.GetVehicles(filter);
  
      return _mapper.Map<IEnumerable<Vehicle>, IEnumerable<VehicleDto>>(vehicles);
     }

@@ -29,11 +29,20 @@ getVehicle(id) {
       .map(res => res);
   }
 
-  getVehicles() {
-     return this.http.get<any[]>( this.baseUrl + 'vehicles')
+  getVehicles(filter) {
+     return this.http.get<any[]>( this.baseUrl + 'vehicles' + '?' + this.toQueryString(filter))
            .map(res => res);
        }
 
+  toQueryString(obj) {
+    var parts = [];
+    for (var property in obj) {
+    var value = obj[property];
+    if (value != null && value != undefined) 
+    parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
+    }
+        return parts.join('&');
+     }
 
 
 
