@@ -22,7 +22,34 @@
 .panel-body {
     overflow-y: scroll;
     height: 400px;
-    width: 100px;
+    width: 700px;
 }
 
 
+
+
+#outer-grid {
+    display: grid;
+    grid-template-rows: 3em 10em 10em 10em;
+    grid-template-columns: 10em 40em;
+    grid-gap: 5px;
+    border: solid 4px black;
+  }
+
+  .grid-row1 {
+    padding: 1em;
+    text-align: center;
+    margin: 0.5em 0;
+    grid-column: 1/4;
+    grid-row: 1/1;
+    background-color: plum;
+  }
+
+  .grid-row2 {
+    padding: 1em;
+    text-align: center;
+    margin: 0.5em 0;
+    grid-column: 1/3;
+    grid-row: 2/4;
+    background-color:green;
+  }
