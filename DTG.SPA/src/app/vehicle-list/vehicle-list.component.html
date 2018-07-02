@@ -14,14 +14,36 @@
     <button class="btn btn-default" (click)="resetFilter()">Reset</button>
   </div>
 
-
 <table class="table">
   <thead>
     <tr>
       <th>Id</th>
-      <th>Make</th>
-      <th>Model</th>
-      <th>Contact Name</th>
+      <th (click)="sortBy('make')">Make
+            <i *ngIf="filter.sortBy === 'make'" 
+                    class="fa"
+                    [class.fa-sort-asc]="filter.isSortAscending"
+                    [class.fa-sort-desc]="!filter.isSortAscending"
+            ></i>
+            </th>
+      <th (click)="sortBy('model')">Model
+          <i *ngIf="filter.sortBy === 'model'" 
+          class="fa"
+          [class.fa-sort-asc]="filter.isSortAscending"
+          [class.fa-sort-desc]="!filter.isSortAscending"
+  ></i>
+      </th>
+      <th (click)="sortBy('contactName')">Contact Name
+
+          <i *ngIf="filter.sortBy === 'contactName'" 
+          class="fa"
+          [class.fa-sort-asc]="filter.isSortAscending"
+          [class.fa-sort-desc]="!filter.isSortAscending"
+  ></i>
+
+
+
+
+      </th>
       <th></th>
     </tr>
   </thead>
