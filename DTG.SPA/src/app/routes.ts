@@ -12,6 +12,7 @@ import { MemberEditComponent } from "./members/member-edit/member-edit.component
 import { PreventUnsavedChanges } from "./_guards/prevent-unsaved-changes.guards";
 import { ListsResolver } from "./_resolvers/lists.resolver";
 import { MessagesResolver } from "./_resolvers/message.resolver";
+import { VehicleFormComponent } from "./vehicle-form/vehicle-form.component";
 
 
 
@@ -35,7 +36,9 @@ import { MessagesResolver } from "./_resolvers/message.resolver";
 // ];
 
 export const appRoutes: Routes = [
-  { path: "home", component: HomeComponent },
+ // { path: "home", component: HomeComponent },
+
+  { path: 'vehicles/new', component: VehicleFormComponent },
 
   {
     path: "",
@@ -62,6 +65,8 @@ export const appRoutes: Routes = [
       { path: "list", component: ListComponent, resolve:{users: ListsResolver} }
     ]
   },
+
+  
 
   { path: "**", redirectTo: "home", pathMatch: "full" }
 ];
