@@ -19,9 +19,10 @@ namespace DTG.API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
+        public DbSet<Feature> Features { get; set; }
 
         
-
+        // Fluent API Config
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Like>()
